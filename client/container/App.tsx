@@ -54,7 +54,7 @@ const App = ({wholelists, article, positionSummary}) => {
                             ...
                         </div>
                     </div>
-                    <div className="border border-[#ddd] text-lg shadow-md mt-4 p-3 flex hover:cursor-pointer rounded"
+                    <div className="border border-[#ddd] text-lg shadow-md mt-4 p-3 flex hover:cursor-pointer rounded text-primary"
                         onClick={()=>setOpenNav(selectLeader.positionSummary)}>
                         <UnorderedListOutlined className="mt-1"/>
                         <span className="pl-2">POSITIONS SUMMARY</span>
