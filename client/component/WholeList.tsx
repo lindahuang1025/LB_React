@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const WholeList = ({wholeGoups}) =>{
+const WholeList = ({wholeGoups, onClickWholeList}) =>{
     let [activeGoupItem, setActiveGoupItem] = useState([0, 0]);
     return (<>
     {wholeGoups.map((group, groupIdx)=>{
@@ -14,7 +14,10 @@ const WholeList = ({wholeGoups}) =>{
                     let { Symbol, CompanyName, Price, PriceChange, PricePercentChange, VolumePercentChange } = item;
                     return (<div key={itemIdx} 
                         className={"border border-[#ddd] mb-4 shadow-md px-5 pb-4 pt-[18px] rounded hover:cursor-pointer " + activedClass}
-                        onClick={()=>setActiveGoupItem([groupIdx, itemIdx])}>
+                        onClick={()=>{
+                            setActiveGoupItem([groupIdx, itemIdx]);
+                            onClickWholeList(groupIdx, itemIdx);
+                        }}>
                         <div className="text-xl"><b>{Symbol}</b></div>
                         <div className="flex justify-between pt-[5px] font-light text-sm text-gray">
                             <div>{CompanyName}</div>

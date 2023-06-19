@@ -2,9 +2,12 @@ import { UnorderedListOutlined } from "@ant-design/icons";
 import { useState, useEffect } from "react";
 import WholeList from "../component/WholeList";
 import Article from "../component/Article";
+import PositionSummaryTable from "../component/PositionSummaryTable";
+import SymbolDetail from "../component/SymbolDetail";
 
 const App = ({wholelists, article, positionSummary}) => {
     let [wholeGoups, setWholeGoups] = useState([]);
+    let [openNav, setOpenNav] = useState(2);
     useEffect(()=>{
         let groups = wholelists.map(x=>x.Header).reduce((prev,cur) => prev.includes(cur) ? prev : [...prev,cur],[]);
         let wholeGoupList = [];
@@ -17,6 +20,7 @@ const App = ({wholelists, article, positionSummary}) => {
         });
         setWholeGoups(wholeGoupList);
     }, [wholelists]);
+    const onChangeWholeList = () =>{}
     return (
         <div className="container h-100">
             <div className="flex flex-row">
@@ -34,10 +38,12 @@ const App = ({wholelists, article, positionSummary}) => {
                         <UnorderedListOutlined className="mt-1"/>
                         <span className="pl-2">POSITIONS SUMMARY</span>
                     </div>
-                    <WholeList wholeGoups={wholeGoups} />
+                    <WholeList wholeGoups={wholeGoups} onClickWholeList={(groupIdx, itemIdx)=> onChangeWholeList()}/>
                 </div>
                 <div className="basis-2/3"> 
                     <Article article={article} />
+                    <PositionSummaryTable positionSummary={positionSummary}/>
+                    <SymbolDetail />
                 </div>
             </div>
         </div>
