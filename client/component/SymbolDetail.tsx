@@ -54,7 +54,7 @@ const SymbolDetail = ({wholeItem}: {wholeItem: wholelistsDataType}) =>{
                     <div className="text-xl font-light text-[#333] leading-8">Volume % Chg:</div>
                     <div className="text-lg leading-8">
                         <span className="font-bold">Buy Point: </span>
-                        <span>{BuyPoint}</span>
+                        <span>${BuyPoint}</span>
                     </div>
                     <div className="text-lg leading-8">
                         <span className="font-bold">Position Size: </span>
@@ -62,10 +62,13 @@ const SymbolDetail = ({wholeItem}: {wholeItem: wholelistsDataType}) =>{
                     </div>
                 </div>
                 <div>
-                    <div className="text-xl font-light">
-
-                        ${priceChgFormat.number} ({pricePctChgFormat.number}%)
-                        
+                    <div className={"text-xl font-light leading-8 flex "+ priceClass}>
+                        <Image 
+                            width={14}
+                            height={14}
+                            src={priceChgFormat.isPositive ? GreenArrowImage.src: RedArrowImage.src}
+                            alt={priceChgFormat.isPositive ? GreenArrowImage.alt: RedArrowImage.alt} />
+                        <span className="pl-2.5">${priceChgFormat.number} ({pricePctChgFormat.number}%)</span> 
                     </div>
                     <div className="text-xl font-light flex">
                         <Image 
@@ -73,11 +76,11 @@ const SymbolDetail = ({wholeItem}: {wholeItem: wholelistsDataType}) =>{
                             height={14}
                             src={volumePctChgFormat.isPositive ? GreenArrowImage.src: RedArrowImage.src}
                             alt={volumePctChgFormat.isPositive ? GreenArrowImage.alt: RedArrowImage.alt} />
-                        <span className="leading-8 pl-2.5">{volumePctChgFormat.number}%</span> 
+                        <span className={"leading-8 pl-2.5 " + volumeClass}>{volumePctChgFormat.number}%</span> 
                     </div>
                     <div className="text-lg leading-8">
                         <span className="font-bold">Buy Range: </span>
-                        <span>{BuyRangeFrom} - {BuyRangeTo}</span>
+                        <span>${BuyRangeFrom} - ${BuyRangeTo}</span>
                     </div>
                 </div>
             </div>

@@ -68,9 +68,8 @@ const WholeList = (props: dataType) =>{
                                         height={14}
                                         src={priceChgFormat.isPositive ? GreenArrowImage.src: RedArrowImage.src}
                                         alt={priceChgFormat.isPositive ? GreenArrowImage.alt: RedArrowImage.alt} />
-                                    <span className="pl-2.5">${priceChgFormat.number}</span>
+                                    <span className="pl-2.5">${priceChgFormat.number} ({pricePctChgFormat.number}%)</span>
                                 </span>
-                                <span className={"text-sm font-bold leading-8 " + priceClass}>({pricePctChgFormat.number}%)</span>
                             </div>
                             <div className={"text-base font-bold flex " + volumeClass}>
                                 <Image 

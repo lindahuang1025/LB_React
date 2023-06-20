@@ -6,3 +6,5 @@ tmp/
 temp/
 .next/
 .env
+
+/server/mockData
