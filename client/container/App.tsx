@@ -15,22 +15,23 @@ const selectLeader = {
     wholeList: "WholsList"
 }
 
-type IndexProps = {
+interface dataType {
     wholelists: wholelistsDataType[], 
     article: articleDataType,
     positionSummary: positionSummaryDataType[]
 };
 
-const App = (props: IndexProps) => {
+const App = (props: dataType) => {
     const { wholelists, article, positionSummary } = props;
-    let [wholeGoups, setWholeGoups] = useState([]);
-    let [openNav, setOpenNav] = useState(selectLeader.wholeList);
-    let [wholeItem, setWholItem] = useState({});
+    let [wholeGoups, setWholeGoups] = useState<wholeGoupListDataType[]>([]);
+    let [openNav, setOpenNav] = useState<string>(selectLeader.wholeList);
+    let [wholeItem, setWholItem] = useState<wholelistsDataType>(Object);
     let positionSummaryClass =  openNav == selectLeader.positionSummary? "rounded text-primary": "";
     useEffect(()=>{
-        let groups = wholelists.map(x=>x.Header).reduce((prev,cur) => prev.includes(cur) ? prev : [...prev,cur],[]);
+        let groups = wholelists.map(x=>x.Header)
+            .reduce((prev: string[], cur:string) => prev.includes(cur) ? prev : [...prev,cur], []);
         let wholeGoupList: wholeGoupListDataType[] = [];
-        groups.forEach(header=>{
+        groups.forEach((header: string) =>{
             let groupItems = (wholelists || []).filter(x=>x.Header == header);
             wholeGoupList.push({
                 header: header,

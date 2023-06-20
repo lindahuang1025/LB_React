@@ -8,13 +8,13 @@ import wholelistsDataType from "../client/dataType/wholelistsDataType";
 import articleDataType from "../client/dataType/articleDataType";
 import positionSummaryDataType from "../client/dataType/positionSummaryDataType";
 
-type IndexProps = {
+interface dataType {
   wholelists: wholelistsDataType[], 
   article: articleDataType,
   positionSummary: positionSummaryDataType[]
 };
 
-const Index =(props: IndexProps) => {
+const Index =(props: dataType) => {
   return (
     <PageContainer>
       <ErrorHandler>

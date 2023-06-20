@@ -1,9 +1,13 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import wholeGoupListDataType from "../dataType/wholeGoupListDataType";
 
-const WholeList = ({wholeGoups, onClickWholeList}: {
-    wholeGoups: wholeGoupListDataType[]
-}) =>{
+interface dataType {
+    wholeGoups: wholeGoupListDataType[],
+    onClickWholeList: React.MouseEvent<HTMLElement>
+};
+
+const WholeList = (props: dataType) =>{
+    const {wholeGoups, onClickWholeList} = props;
     let [activeGoupItem, setActiveGoupItem] = useState([0, 0]);
     return (<>
     {wholeGoups.map((group, groupIdx)=>{
