@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migration:generate": "typeorm-ts-node-commonjs migration:generate server/migrations/initCreate --dataSource server/ormconfig.tsx",
+    "migration:run": "typeorm-ts-node-commonjs migration:run --dataSource server/ormconfig.tsx"
   },
   "dependencies": {
     "@ant-design/icons": "^5.1.4",

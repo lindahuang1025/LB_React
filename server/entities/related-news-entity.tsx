@@ -1,7 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
 
-@Entity()
+@Entity({name:"related_news"})
 export class RelatedNews {
+  @PrimaryGeneratedColumn()
+  Id: number
+
   @Column()
   Headline: string
 
