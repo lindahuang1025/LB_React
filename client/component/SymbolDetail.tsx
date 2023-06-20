@@ -1,6 +1,8 @@
 import { LeadersImage } from "../config/imgConfig";
 import wholelistsDataType from "../dataType/wholelistsDataType";
-import Image from 'next/image'
+import Image from 'next/image';
+import numberFormat from "../utils/numberFormat";
+import { GreenArrowImage, RedArrowImage } from "../config/imgConfig";
 
 const SymbolDetail = ({wholeItem}: {wholeItem: wholelistsDataType}) =>{
     let { Symbol, 
@@ -18,6 +20,11 @@ const SymbolDetail = ({wholeItem}: {wholeItem: wholelistsDataType}) =>{
         BackStory,
         RecentArticle
     } = wholeItem;
+    let priceChgFormat = numberFormat(PriceChange),
+        pricePctChgFormat = numberFormat(PricePercentChange),
+        volumePctChgFormat = numberFormat(VolumePercentChange),
+        priceClass = priceChgFormat.isPositive ? "text-primary": "text-red",
+        volumeClass = volumePctChgFormat.isPositive ? "text-primary": "text-red";
     return (<div className="border border-[#ddd] shadow-md rounded bg-white border-t-8 border-t-primary px-5 pt-[18px] pb-[15px] mt-[70px]">
         <div className="flex justify-between">
             <div>
@@ -55,8 +62,19 @@ const SymbolDetail = ({wholeItem}: {wholeItem: wholelistsDataType}) =>{
                     </div>
                 </div>
                 <div>
-                    <div className="text-xl font-light">${PriceChange} ({PricePercentChange}%)</div>
-                    <div className="text-xl font-light">{VolumePercentChange}</div>
+                    <div className="text-xl font-light">
+
+                        ${priceChgFormat.number} ({pricePctChgFormat.number}%)
+                        
+                    </div>
+                    <div className="text-xl font-light flex">
+                        <Image 
+                            width={14}
+                            height={14}
+                            src={volumePctChgFormat.isPositive ? GreenArrowImage.src: RedArrowImage.src}
+                            alt={volumePctChgFormat.isPositive ? GreenArrowImage.alt: RedArrowImage.alt} />
+                        <span className="leading-8 pl-2.5">{volumePctChgFormat.number}%</span> 
+                    </div>
                     <div className="text-lg leading-8">
                         <span className="font-bold">Buy Range: </span>
                         <span>{BuyRangeFrom} - {BuyRangeTo}</span>

@@ -7,8 +7,8 @@ const Article = ({article}: {article: articleDataType}) =>{
             {article.Headline}
         </div>
         <div className="p-5">
-            <div className="mb-[23px] ">
-                <span className="text-lg font-normal text-[333] italic">
+            <div className="mb-[23px]">
+                <span className="text-lg font-normal text-[#333] italic">
                     Updated 06/15/2023 08:01 AM ET
                 </span>
             </div>
