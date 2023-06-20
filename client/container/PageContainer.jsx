@@ -4,13 +4,13 @@ import Footer from "./Footer";
 import ErrorHandler from "../component/ErrorHandler";
 import React from "react";
 
-const PageContainer = ({children})=>{
+const PageContainer = ({children, marketIndices})=>{
     return (
         <>
         <Head></Head>
 
         <ErrorHandler>
-            <Header />
+            <Header marketIndices={marketIndices} />
         </ErrorHandler>
         {children}
         <ErrorHandler>

@@ -15,6 +15,9 @@ module.exports = {
       white: '#fff',
       black: "black"
     },
+    fontFamily: {
+      lato: ["Lato"]
+    }
   },
   plugins: [],
 }

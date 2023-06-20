@@ -1,7 +1,7 @@
-import articleData from "../mockData/article-mock"
+// import articleData from "../mockData/article-mock"
 
 const getArticle = async () => {
-  return articleData;
+  return [];
 }
 
 export {
