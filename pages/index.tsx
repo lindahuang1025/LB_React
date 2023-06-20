@@ -37,8 +37,11 @@ Index.getInitialProps = async (ctx: NextPageContext) => {
   return { 
     wholelists: resWholelists.data,
     article: resArticle.data,
-    positionSummary: resPositionSummary.data,
-    marketIndices
+    marketIndices,
+    positionSummary: resPositionSummary.data.map((item: positionSummaryDataType, index: number)=>{
+      item.key=index;
+      return item;
+    })
   }
 }
 

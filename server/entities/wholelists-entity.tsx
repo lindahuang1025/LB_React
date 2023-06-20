@@ -1,7 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
 
-@Entity()
+@Entity({name:"whole_lists"})
 export class Wholelists {
+  @PrimaryGeneratedColumn()
+  Id: number
   @Column()
   Symbol: string
 

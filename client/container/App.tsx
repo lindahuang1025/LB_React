@@ -1,4 +1,4 @@
-import { UnorderedListOutlined } from "@ant-design/icons";
+import { UnorderedListOutlined, EllipsisOutlined } from "@ant-design/icons";
 import { useState, useEffect } from "react";
 import WholeList from "../component/WholeList";
 import Article from "../component/Article";
@@ -31,7 +31,10 @@ const App = (props: dataType) => {
     let [wholeGoups, setWholeGoups] = useState<wholeGoupListDataType[]>([]);
     let [openNav, setOpenNav] = useState<string>(selectLeader.wholeList);
     let [wholeItem, setWholItem] = useState<wholelistsDataType>(Object);
-    let positionSummaryClass =  openNav == selectLeader.positionSummary? "rounded text-primary": "";
+    let positionSummaryClass =  openNav == selectLeader.positionSummary? "rounded text-primary border-t-8 border-t-primary": "",
+        articleActiveClass = openNav == selectLeader.article? "bg-primary": "bg-drakGreen",
+        articleUnActiveClass = openNav == selectLeader.article? "bg-drakGreen": "bg-primary",
+        isActiveWholeList = openNav == selectLeader.wholeList;
 
     useEffect(()=>{
         let groups = wholelists.map(x=>x.Header)
@@ -71,26 +74,30 @@ const App = (props: dataType) => {
     }
     return (
         <div className="container h-100">
-            <div className="flex flex-row">
-                <div className="basis-1/3 mr-2">
-                <div className="text-xl/[26px] text-blue mb-3">LEADERS LIST</div>
-                    <div className="flex text-white hover:cursor-pointer"
-                        onClick={()=>setOpenNav(selectLeader.article)}>
-                        <div className="bg-primary text-lg px-5 py-2">
-                            Nvidia Shines, CELH Lags With Leaders Mixed After Fed
+            <div className="flex flex-row ">
+                <div className="basis-1/3 mr-2 my-2.5">
+                    <div className="text-xl/[26px] text-blue mb-[15px] mt-5">LEADERS LIST</div>
+                    <div className="h-100">
+                        <div className="flex text-white hover:cursor-pointer"
+                            onClick={()=>setOpenNav(selectLeader.article)}>
+                            <div className={"text-lg px-5 py-2 grow " + articleActiveClass}>
+                                Nvidia Shines, CELH Lags With Leaders Mixed After Fed
+                            </div>
+                            <div className={"text-4xl flex-none items-center w-[45px] pl-[4.5px] pt-[9px] " + articleUnActiveClass}>
+                                <EllipsisOutlined />
+                            </div>
                         </div>
-                        <div className="bg-drakGreen flex-initial w-11 text-center text-4xl px-2">
-                            ...
+                        <div className={"border border-[#ddd] text-lg shadow-md mt-[18px] p-3 flex hover:cursor-pointer bg-white "+ positionSummaryClass}
+                            onClick={()=>setOpenNav(selectLeader.positionSummary)}>
+                            <UnorderedListOutlined className="mt-1"/>
+                            <span className="pl-2">POSITIONS SUMMARY</span>
                         </div>
+                        <WholeList 
+                            wholeGoups={wholeGoups} 
+                            isActiveWholeList={isActiveWholeList}
+                            onClickWholeList={onClickWholeList}/>
                     </div>
-                    <div className={"border border-[#ddd] text-lg shadow-md mt-4 p-3 flex hover:cursor-pointer "+ positionSummaryClass}
-                        onClick={()=>setOpenNav(selectLeader.positionSummary)}>
-                        <UnorderedListOutlined className="mt-1"/>
-                        <span className="pl-2">POSITIONS SUMMARY</span>
-                    </div>
-                    <WholeList 
-                        wholeGoups={wholeGoups} 
-                        onClickWholeList={onClickWholeList}/>
+                    
                 </div>
                 <div className="basis-2/3"> 
                     <MainComponent />

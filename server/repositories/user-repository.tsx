@@ -1,4 +1,4 @@
-import { getAppDataSource } from "../data-source"
+import { getAppDataSource } from "../data-provider"
 import { User } from "../entities/user-entity"
 
 const getAllUser = async () => {

@@ -12,7 +12,9 @@ const PageContainer = ({children, marketIndices})=>{
         <ErrorHandler>
             <Header marketIndices={marketIndices} />
         </ErrorHandler>
-        {children}
+        <div className="bg-[#f5f5f5]">
+            {children}
+        </div> 
         <ErrorHandler>
             <Footer />
         </ErrorHandler>

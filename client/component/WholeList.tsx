@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import wholeGoupListDataType from "../dataType/wholeGoupListDataType";
+import { CaretUpOutlined, CaretDownOutlined } from "@ant-design/icons";
+import { GreenArrowImage, RedArrowImage } from "../config/imgConfig";
+import numberFormat from "../utils/numberFormat";
+import Image from 'next/image'
 
 interface dataType {
     wholeGoups: wholeGoupListDataType[],
+    isActiveWholeList: boolean,
     onClickWholeList: (n: CustomEvent) => void
 };
 
@@ -12,20 +17,36 @@ interface CustomEvent {
 }
 
 const WholeList = (props: dataType) =>{
-    const { wholeGoups, onClickWholeList } = props;
-    let [activeGoupItem, setActiveGoupItem] = useState([0, 0]);
+    const { wholeGoups, isActiveWholeList, onClickWholeList } = props;
+    let [activeGoupItem, setActiveGoupItem] = useState<[number, number]>([0, 0]);
+    let [openGroupArray, setOpenGroupArray] = useState<[number, boolean]>([0, true]);
     return (<>
     {wholeGoups.map((group, groupIdx)=>{
         let { header, items=[] } = group;
+        let openGroup = false;
+        if(openGroupArray[0] == groupIdx){
+            openGroup = openGroupArray[1]; 
+        }
         return (
             <div key={groupIdx}>
-                <h3 className="my-3.5 text-xl">{header}</h3>
-                {items.map((item, itemIdx)=>{
+                <h3 className=" text-xl hover:cursor-pointer flex justify-between justify-items-center"
+                    onClick={()=>setOpenGroupArray([groupIdx, !openGroup])}>
+                    <div className="my-3.5">{header}</div> 
+                    <div className="my-2.5">
+                        {openGroup? <CaretDownOutlined />: <CaretUpOutlined />}
+                    </div> 
+                </h3>
+                {openGroup && items.map((item, itemIdx)=>{
                     let isActive = (activeGoupItem[0] == groupIdx) && (activeGoupItem[1] == itemIdx);
-                    let activedClass = isActive ? "border-t-8 border-t-primary": "";
+                    let activedClass = (isActiveWholeList && isActive) ? "border-t-8 border-t-primary": "";
                     let { Symbol, CompanyName, Price, PriceChange, PricePercentChange, VolumePercentChange } = item;
+                    let priceChgFormat = numberFormat(PriceChange),
+                        pricePctChgFormat = numberFormat(PricePercentChange),
+                        volumePctChgFormat = numberFormat(VolumePercentChange),
+                        priceClass = priceChgFormat.isPositive ? "text-primary": "text-red",
+                        volumeClass = volumePctChgFormat.isPositive ? "text-primary": "text-red";
                     return (<div key={itemIdx} 
-                        className={"border border-[#ddd] mb-4 shadow-md px-5 pb-4 pt-[18px] rounded hover:cursor-pointer " + activedClass}
+                        className={"border border-[#ddd] mb-4 shadow-md px-5 pb-4 pt-[18px] rounded hover:cursor-pointer bg-white " + activedClass}
                         onClick={()=>{
                             setActiveGoupItem([groupIdx, itemIdx]);
                             onClickWholeList({
@@ -39,12 +60,25 @@ const WholeList = (props: dataType) =>{
                             <div>Volume % Chg:</div>
                         </div>
                         <div className="flex justify-between pt-[10px]">
-                            <div>
+                            <div className="flex">
                                 <b className="text-2xl font-bold mr-[15px]">${Price}</b>
-                                <span className="text-sm font-bold">${PriceChange}</span>
-                                <span className="text-sm font-bold">({PricePercentChange}%)</span>
+                                <span className={"text-sm font-bold leading-8 flex " + priceClass}>
+                                    <Image 
+                                        width={14}
+                                        height={14}
+                                        src={priceChgFormat.isPositive ? GreenArrowImage.src: RedArrowImage.src}
+                                        alt={priceChgFormat.isPositive ? GreenArrowImage.alt: RedArrowImage.alt} />
+                                    <span className="pl-2.5">${priceChgFormat.number} ({pricePctChgFormat.number}%)</span>
+                                </span>
                             </div>
-                            <div className="text-base font-bold">{VolumePercentChange}%</div>
+                            <div className={"text-base font-bold flex " + volumeClass}>
+                                <Image 
+                                    width={14}
+                                    height={14}
+                                    src={volumePctChgFormat.isPositive ? GreenArrowImage.src: RedArrowImage.src}
+                                    alt={volumePctChgFormat.isPositive ? GreenArrowImage.alt: RedArrowImage.alt} />
+                               <span className="leading-8 pl-2.5">{volumePctChgFormat.number}%</span> 
+                            </div>
                         </div>
                     </div>)
                 })}
