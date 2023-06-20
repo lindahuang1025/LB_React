@@ -1,4 +1,4 @@
-import articleDataType from "../dataType/articleDataType";
+import articleDataType from "@/client/dataType/articleDataType";
 
 const Article = ({article}: {article: articleDataType}) =>{
     return (

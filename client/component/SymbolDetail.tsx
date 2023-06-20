@@ -1,8 +1,7 @@
-import { LeadersImage } from "@/client/config/imgConfig";
-import wholelistsDataType from "../dataType/wholelistsDataType";
+import { LeadersImage, GreenArrowImage, RedArrowImage } from "@/client/config/imgConfig";
+import wholelistsDataType from "@/client/dataType/wholelistsDataType";
 import Image from 'next/image';
-import numberFormat from "../utils/numberFormat";
-import { GreenArrowImage, RedArrowImage } from "../config/imgConfig";
+import numberFormat from "@/client/utils/numberFormat";
 
 const SymbolDetail = ({wholeItem}: {wholeItem: wholelistsDataType}) =>{
     let { Symbol, 

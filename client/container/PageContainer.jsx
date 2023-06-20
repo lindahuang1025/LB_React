@@ -1,7 +1,7 @@
 import Head from "next/head";
-import Header from "./Header";
-import Footer from "./Footer";
-import ErrorHandler from "../component/ErrorHandler";
+import Header from "@/client/container/Header";
+import Footer from "@/client/container/Footer";
+import ErrorHandler from "@/client/component/ErrorHandler";
 import React from "react";
 
 const PageContainer = ({children, marketIndices})=>{

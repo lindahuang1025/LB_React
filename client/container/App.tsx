@@ -1,13 +1,13 @@
 import { UnorderedListOutlined, EllipsisOutlined } from "@ant-design/icons";
 import { useState, useEffect } from "react";
-import WholeList from "../component/WholeList";
-import Article from "../component/Article";
-import PositionSummaryTable from "../component/PositionSummaryTable";
-import SymbolDetail from "../component/SymbolDetail";
-import wholelistsDataType from "../dataType/wholelistsDataType";
-import articleDataType from "../dataType/articleDataType";
-import positionSummaryDataType from "../dataType/positionSummaryDataType";
-import wholeGoupListDataType from "../dataType/wholeGoupListDataType";
+import WholeList from "@/client/component/WholeList";
+import Article from "@/client/component/Article";
+import PositionSummaryTable from "@/client/component/PositionSummaryTable";
+import SymbolDetail from "@/client/component/SymbolDetail";
+import wholelistsDataType from "@/client/dataType/wholelistsDataType";
+import articleDataType from "@/client/dataType/articleDataType";
+import positionSummaryDataType from "@/client/dataType/positionSummaryDataType";
+import wholeGoupListDataType from "@/client/dataType/wholeGoupListDataType";
 
 const selectLeader = {
     article: "Article",

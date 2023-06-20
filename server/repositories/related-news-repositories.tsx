@@ -1,7 +1,7 @@
-// import relatedNewsData from "../mockData/related-news-mock"
+import relatedNewsData from "@/server/mockData/related-news-mock.json";
 
 const getRelatedNews = async () => {
-  return [];
+  return relatedNewsData;
 }
 
 export {

@@ -1,7 +1,7 @@
-// import wholelistsData from "../mockData/wholelists-mock"
+import wholelistsData from "@/server/mockData/wholelists-mock.json";
 
 const getWholelists = async () => {
-    return []
+    return wholelistsData.Items
 }
 
 export {

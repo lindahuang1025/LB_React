@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from 'antd';
-import type { ColumnsType, TableProps } from 'antd/es/table';
-import positionSummaryDataType from "../dataType/positionSummaryDataType";
+import type { ColumnsType } from 'antd/es/table';
+import positionSummaryDataType from "@/client/dataType/positionSummaryDataType";
 
 const columns: ColumnsType<positionSummaryDataType> = [
   {

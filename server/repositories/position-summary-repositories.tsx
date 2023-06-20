@@ -1,7 +1,7 @@
-// import positionSummaryData from "../mockData/position-summary-mock"
+import positionSummaryData from "@/server/mockData/position-summary-mock.json";
 
 const getPositionSummary = async () => {
-  return [];
+  return positionSummaryData;
 }
 
 export {

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import wholeGoupListDataType from "../dataType/wholeGoupListDataType";
+import wholeGoupListDataType from "@/client/dataType/wholeGoupListDataType";
 import { CaretUpOutlined, CaretDownOutlined } from "@ant-design/icons";
-import { GreenArrowImage, RedArrowImage } from "../config/imgConfig";
-import numberFormat from "../utils/numberFormat";
+import { GreenArrowImage, RedArrowImage } from "@/client/config/imgConfig";
+import numberFormat from "@/client/utils/numberFormat";
 import Image from 'next/image'
 
 interface dataType {
