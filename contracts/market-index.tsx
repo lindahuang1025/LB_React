@@ -1,7 +1,3 @@
-export interface HeaderProps {
-  marketIndices: MarketIndices;
-}
-
 class MarketIndex {
   Symbol: string;
   IndexValueChange: string;
@@ -57,7 +53,7 @@ class EtfIndex {
 }
 
 enum MarketStatus {
-  "AFTER HOURS",
+  AFTERHOURS = "AFTER HOURS",
 }
 
 export class MarketIndices {

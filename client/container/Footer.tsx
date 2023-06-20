@@ -4,8 +4,8 @@ import Image from 'next/image'
 import nasdaq from "@/public/img/nasdaq.png"
 
 const Footer: React.FC<{}> = () => {
-  return <div className="w-[1339px] mx-auto mt-7">
-    <div className="text-[10px] text-[#777777]">
+  return <div className="desktop:w-[1339px] laptop:w-[970px] tablet:w-[760px] mx-auto mt-7">
+    <div className="text-[10px] text-[#777777] mx-4 tablet:mx-0">
       <div className="flex items-center">
         <Image
           height={18}

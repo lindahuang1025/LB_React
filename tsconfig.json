@@ -22,8 +22,9 @@
         "name": "next"
       }
     ],
-    "baseUrl": "client",
+    "baseUrl": ".",
     "paths": {
+      "@/*": ["./*"],
       "@config/*": ["config/*"],
       "@dataType/*": ["dataType/*"]
     }

@@ -1,4 +1,5 @@
 import request from "./axios";
+import { SymbolSearchResponse } from "@/contracts"
 
 function getArticle() {
   return request({
@@ -28,9 +29,23 @@ function getWholelists() {
     });
 }
 
+let searchSymbolsAbortController: AbortController
+async function searchSymbols(searchText: string): Promise<SymbolSearchResponse> {
+  if (searchSymbolsAbortController) {
+    searchSymbolsAbortController.abort()
+  }
+  searchSymbolsAbortController = new AbortController()
+  const responseData: any = await request({
+    url: `/api/leaderboard/symbols?search=${searchText}`,
+    method: "GET"
+  })
+  return new SymbolSearchResponse(responseData)
+}
+
 export {
     getArticle,
     getPositionSummary,
     getRelatedNews,
-    getWholelists
+    getWholelists,
+    searchSymbols
 }

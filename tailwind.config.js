@@ -19,7 +19,12 @@ module.exports = {
     },
     fontFamily: {
       lato: ["Lato"]
-    }
+    },
+    screens: {
+      'tablet': '800px',
+      'laptop': '1024px',
+      'desktop': '1380px',
+    },
   },
   plugins: [],
 }

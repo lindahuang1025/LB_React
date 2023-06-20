@@ -9,7 +9,7 @@ import articleDataType from "../client/dataType/articleDataType";
 import positionSummaryDataType from "../client/dataType/positionSummaryDataType";
 
 import { getMarketIndices } from "@/server/repositories/market-indices"
-import { MarketIndices } from "@/interfaces"
+import { MarketIndices } from "@/contracts"
 
 interface dataType {
   wholelists: wholelistsDataType[], 
