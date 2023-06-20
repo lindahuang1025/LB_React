@@ -6,6 +6,14 @@ module.exports = {
   theme: {
     container: {
       center: true,
+      padding: '15px',
+      screens: {
+        sm: '600px',
+        md: '720px',
+        lg: '940px',
+        xl: '1140px',
+        '2xl': '1339px',
+      },
     },
     colors: {
       primary: '#5eb400',

@@ -18,7 +18,7 @@ const SymbolDetail = ({wholeItem}: {wholeItem: wholelistsDataType}) =>{
         BackStory,
         RecentArticle
     } = wholeItem;
-    return (<div className="border border-[#ddd] shadow-md bg-white border-t-8 border-t-primary px-5 pt-[18px] pb-[15px]">
+    return (<div className="border border-[#ddd] shadow-md rounded bg-white border-t-8 border-t-primary px-5 pt-[18px] pb-[15px] mt-[70px]">
         <div className="flex justify-between">
             <div>
                 <h3 className="text-[#222] mb-4 leading-tight"> 
@@ -74,7 +74,9 @@ const SymbolDetail = ({wholeItem}: {wholeItem: wholelistsDataType}) =>{
             <b className="text-lg">Backstory: </b>{BackStory}
         </div>
         <div className="mb-2.5">
-            <div><b className="text-lg">Recent Articles: </b></div>
+            <div className="mb-[11px]">
+                <b className="text-lg">Recent Articles: </b>
+            </div>
             <div className="text-primary text-lg leading-5/[22px]"
                 dangerouslySetInnerHTML={{ __html: RecentArticle }}></div>
         </div>

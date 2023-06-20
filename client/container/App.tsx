@@ -74,10 +74,10 @@ const App = (props: dataType) => {
     }
     return (
         <div className="container h-100">
-            <div className="flex flex-row">
+            <div className="flex flex-row ">
                 <div className="basis-1/3 mr-2 my-2.5">
                     <div className="text-xl/[26px] text-blue mb-[15px] mt-5">LEADERS LIST</div>
-                    <div className="h-fit scroll-auto">
+                    <div className="h-100">
                         <div className="flex text-white hover:cursor-pointer"
                             onClick={()=>setOpenNav(selectLeader.article)}>
                             <div className={"text-lg px-5 py-2 grow " + articleActiveClass}>
