@@ -47,13 +47,19 @@ const columns: ColumnsType<positionSummaryDataType> = [
 ];
 
 const PositionSummaryTable = ({positionSummary}: {positionSummary: positionSummaryDataType[]}) =>{
-    return (<div>
-        <div><b>POSITIONS SUMMARY</b></div>
-        <div>Data as of June 16 close. Invested percentage: 87%</div>
-        <Table 
-          columns={columns} 
-          dataSource={positionSummary}
-          pagination={false}  />
+    return (
+    <div className='mt-[25px]'>
+      <div className='text-lg leading-[22px] text-[#222] font-normal'>
+        POSITIONS SUMMARY
+      </div>
+      <div className='text-sm leading-[17px] text-[#222] font-light mb-[10px]'>
+        Data as of June 16 close. Invested percentage: 87%
+      </div>
+      <Table 
+        className='border border-[#ddd]'
+        columns={columns} 
+        dataSource={positionSummary}
+        pagination={false}  />
     </div>)
 }
 

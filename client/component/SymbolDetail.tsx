@@ -17,7 +17,7 @@ const SymbolDetail = ({wholeItem}: {wholeItem: wholelistsDataType}) =>{
         BackStory,
         RecentArticle
     } = wholeItem;
-    return (<div className="border">
+    return (<div className="border bg-white">
         <div>
             <div>
                 <div>
