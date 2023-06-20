@@ -3,6 +3,7 @@ import wholeGoupListDataType from "../dataType/wholeGoupListDataType";
 
 interface dataType {
     wholeGoups: wholeGoupListDataType[],
+    isActiveWholeList: boolean,
     onClickWholeList: (n: CustomEvent) => void
 };
 
@@ -12,7 +13,7 @@ interface CustomEvent {
 }
 
 const WholeList = (props: dataType) =>{
-    const { wholeGoups, onClickWholeList } = props;
+    const { wholeGoups, isActiveWholeList, onClickWholeList } = props;
     let [activeGoupItem, setActiveGoupItem] = useState([0, 0]);
     return (<>
     {wholeGoups.map((group, groupIdx)=>{
@@ -22,10 +23,10 @@ const WholeList = (props: dataType) =>{
                 <h3 className="my-3.5 text-xl">{header}</h3>
                 {items.map((item, itemIdx)=>{
                     let isActive = (activeGoupItem[0] == groupIdx) && (activeGoupItem[1] == itemIdx);
-                    let activedClass = isActive ? "border-t-8 border-t-primary": "";
+                    let activedClass = (isActiveWholeList && isActive) ? "border-t-8 border-t-primary": "";
                     let { Symbol, CompanyName, Price, PriceChange, PricePercentChange, VolumePercentChange } = item;
                     return (<div key={itemIdx} 
-                        className={"border border-[#ddd] mb-4 shadow-md px-5 pb-4 pt-[18px] rounded hover:cursor-pointer " + activedClass}
+                        className={"border border-[#ddd] mb-4 shadow-md px-5 pb-4 pt-[18px] rounded hover:cursor-pointer bg-white " + activedClass}
                         onClick={()=>{
                             setActiveGoupItem([groupIdx, itemIdx]);
                             onClickWholeList({

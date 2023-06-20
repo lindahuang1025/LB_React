@@ -1,4 +1,4 @@
-import { LeadersImage } from "@config/imgConfig";
+import { LeadersImage } from "../config/imgConfig";
 import wholelistsDataType from "../dataType/wholelistsDataType";
 
 const SymbolDetail = ({wholeItem}: {wholeItem: wholelistsDataType}) =>{

@@ -1,4 +1,5 @@
 interface positionSummaryDataType {
+  key: number
   Id: number
   Action: number
   Symbol: string
