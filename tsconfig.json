@@ -22,10 +22,12 @@
         "name": "next"
       }
     ],
+    "baseUrl": "client",
     "paths": {
-      "@/*": ["./*"]
+      "@config/*": ["config/*"],
+      "@dataType/*": ["dataType/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "client/component/ErrorHandler.jsx", "client"],
   "exclude": ["node_modules"]
 }

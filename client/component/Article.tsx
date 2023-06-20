@@ -1,4 +1,6 @@
-const Article = ({article}) =>{
+import articleDataType from "../dataType/articleDataType";
+
+const Article = ({article}: {article: articleDataType}) =>{
     return (<div className="mt-9">
         <div className="bg-primary text-white text-2xl px-4 py-5">
             {article.Headline}

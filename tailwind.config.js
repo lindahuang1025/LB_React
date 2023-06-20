@@ -13,7 +13,9 @@ module.exports = {
       drakGreen: '#1b7600',
       lightGreen: '#2a8f00',
       white: '#fff',
-      black: "black"
+      black: "black",
+      gray: "#000",
+      red: "#d0021b",
     },
     fontFamily: {
       lato: ["Lato"]

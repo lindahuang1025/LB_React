@@ -3,11 +3,22 @@ import App from "../client/container/App";
 import ErrorHandler from "../client/component/ErrorHandler";
 import { getWholelists, getArticle, getPositionSummary } from "../client/services/lbService";
 import { NextPageContext } from 'next';
+import React from "react";
+import wholelistsDataType from "../client/dataType/wholelistsDataType";
+import articleDataType from "../client/dataType/articleDataType";
+import positionSummaryDataType from "../client/dataType/positionSummaryDataType";
 
 import { getMarketIndices } from "@/server/repositories/market-indices"
 import { MarketIndices } from "@/interfaces"
 
-const Index =(props) => {
+interface dataType {
+  wholelists: wholelistsDataType[], 
+  article: articleDataType,
+  positionSummary: positionSummaryDataType[],
+  marketIndices: MarketIndices
+};
+
+const Index =(props: dataType) => {
   return (
     <PageContainer marketIndices={props.marketIndices}>
       <ErrorHandler>
