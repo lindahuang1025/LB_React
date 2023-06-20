@@ -15,6 +15,7 @@ const App = ({wholelists, article, positionSummary}) => {
     let [wholeGoups, setWholeGoups] = useState([]);
     let [openNav, setOpenNav] = useState(selectLeader.wholeList);
     let [wholeItem, setWholItem] = useState({});
+    let positionSummaryClass =  openNav == selectLeader.positionSummary? "rounded text-primary": "";
     useEffect(()=>{
         let groups = wholelists.map(x=>x.Header).reduce((prev,cur) => prev.includes(cur) ? prev : [...prev,cur],[]);
         let wholeGoupList = [];
@@ -54,7 +55,7 @@ const App = ({wholelists, article, positionSummary}) => {
                             ...
                         </div>
                     </div>
-                    <div className="border border-[#ddd] text-lg shadow-md mt-4 p-3 flex hover:cursor-pointer rounded text-primary"
+                    <div className={"border border-[#ddd] text-lg shadow-md mt-4 p-3 flex hover:cursor-pointer "+ positionSummaryClass}
                         onClick={()=>setOpenNav(selectLeader.positionSummary)}>
                         <UnorderedListOutlined className="mt-1"/>
                         <span className="pl-2">POSITIONS SUMMARY</span>
