@@ -1,10 +1,7 @@
-import { getAppDataSource } from "../data-provider"
-import { PositionSummary } from "../entities/position-summary-entity"
+import positionSummaryData from "../mockData/position-summary-mock"
 
 const getPositionSummary = async () => {
-  const AppDataSource = await getAppDataSource()
-  const positionRepository = AppDataSource.getRepository(PositionSummary)
-  return positionRepository.find()
+  return await positionSummaryData;
 }
 
 export {

@@ -6,6 +6,14 @@ module.exports = {
   theme: {
     container: {
       center: true,
+      padding: '15px',
+      screens: {
+        sm: '600px',
+        md: '720px',
+        lg: '940px',
+        xl: '1140px',
+        '2xl': '1339px',
+      },
     },
     colors: {
       primary: '#5eb400',
@@ -13,7 +21,9 @@ module.exports = {
       drakGreen: '#1b7600',
       lightGreen: '#2a8f00',
       white: '#fff',
-      black: "black"
+      black: "black",
+      gray: "#000",
+      red: "#d0021b",
     },
   },
   plugins: [],

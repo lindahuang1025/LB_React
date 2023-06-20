@@ -1,9 +1,7 @@
-import { getAppDataSource } from "../data-provider"
-import { Article } from "../entities/article-entity"
+import articleData from "../mockData/article-mock"
+
 const getArticle = async () => {
-  const AppDataSource = await getAppDataSource()
-  const articleRepository = AppDataSource.getRepository(Article)
-  return articleRepository.find()
+  return await articleData;
 }
 
 export {

@@ -3,8 +3,18 @@ import App from "../client/container/App";
 import ErrorHandler from "../client/component/ErrorHandler";
 import { getWholelists, getArticle, getPositionSummary } from "../client/services/lbService";
 import { NextPageContext } from 'next';
+import React from "react";
+import wholelistsDataType from "../client/dataType/wholelistsDataType";
+import articleDataType from "../client/dataType/articleDataType";
+import positionSummaryDataType from "../client/dataType/positionSummaryDataType";
 
-const Index =(props) => {
+interface dataType {
+  wholelists: wholelistsDataType[], 
+  article: articleDataType,
+  positionSummary: positionSummaryDataType[]
+};
+
+const Index =(props: dataType) => {
   return (
     <PageContainer>
       <ErrorHandler>
@@ -21,7 +31,10 @@ Index.getInitialProps = async (ctx: NextPageContext) => {
   return { 
     wholelists: resWholelists.data,
     article: resArticle.data,
-    positionSummary: resPositionSummary.data
+    positionSummary: resPositionSummary.data.map((item: positionSummaryDataType, index: number)=>{
+      item.key=index;
+      return item;
+    })
   }
 }
 

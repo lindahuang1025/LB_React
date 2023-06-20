@@ -1,10 +1,7 @@
-import { getAppDataSource } from "../data-provider"
-import { RelatedNews } from "../entities/related-news-entity"
+import relatedNewsData from "../mockData/related-news-mock"
 
 const getRelatedNews = async () => {
-  const AppDataSource = await getAppDataSource()
-  const newsRepository = AppDataSource.getRepository(RelatedNews)
-  return newsRepository.find()
+  return await relatedNewsData;
 }
 
 export {

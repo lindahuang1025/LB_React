@@ -12,7 +12,9 @@ const PageContainer = ({children})=>{
         <ErrorHandler>
             <Header />
         </ErrorHandler>
-        {children}
+        <div className="bg-[#f5f5f5]">
+            {children}
+        </div> 
         <ErrorHandler>
             <Footer />
         </ErrorHandler>
