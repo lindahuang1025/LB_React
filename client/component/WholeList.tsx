@@ -3,11 +3,16 @@ import wholeGoupListDataType from "../dataType/wholeGoupListDataType";
 
 interface dataType {
     wholeGoups: wholeGoupListDataType[],
-    onClickWholeList: React.MouseEvent<HTMLElement>
+    onClickWholeList: (n: CustomEvent) => void
 };
 
+interface CustomEvent {
+    groupIdx: number,
+    itemIdx: number
+}
+
 const WholeList = (props: dataType) =>{
-    const {wholeGoups, onClickWholeList} = props;
+    const { wholeGoups, onClickWholeList } = props;
     let [activeGoupItem, setActiveGoupItem] = useState([0, 0]);
     return (<>
     {wholeGoups.map((group, groupIdx)=>{
@@ -23,7 +28,10 @@ const WholeList = (props: dataType) =>{
                         className={"border border-[#ddd] mb-4 shadow-md px-5 pb-4 pt-[18px] rounded hover:cursor-pointer " + activedClass}
                         onClick={()=>{
                             setActiveGoupItem([groupIdx, itemIdx]);
-                            onClickWholeList(groupIdx, itemIdx);
+                            onClickWholeList({
+                                groupIdx: groupIdx,
+                                itemIdx: itemIdx
+                            });
                         }}>
                         <div className="text-xl"><b>{Symbol}</b></div>
                         <div className="flex justify-between pt-[5px] font-light text-sm text-gray">

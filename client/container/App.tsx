@@ -21,12 +21,18 @@ interface dataType {
     positionSummary: positionSummaryDataType[]
 };
 
+interface CustomEvent {
+    groupIdx: number,
+    itemIdx: number
+}
+
 const App = (props: dataType) => {
     const { wholelists, article, positionSummary } = props;
     let [wholeGoups, setWholeGoups] = useState<wholeGoupListDataType[]>([]);
     let [openNav, setOpenNav] = useState<string>(selectLeader.wholeList);
     let [wholeItem, setWholItem] = useState<wholelistsDataType>(Object);
     let positionSummaryClass =  openNav == selectLeader.positionSummary? "rounded text-primary": "";
+
     useEffect(()=>{
         let groups = wholelists.map(x=>x.Header)
             .reduce((prev: string[], cur:string) => prev.includes(cur) ? prev : [...prev,cur], []);
@@ -43,6 +49,7 @@ const App = (props: dataType) => {
             setWholItem(wholeGoupList[0].items[0]);
         }
     }, [wholelists]);
+
     const MainComponent = () => {
         switch(openNav){
             case selectLeader.article: 
@@ -51,7 +58,16 @@ const App = (props: dataType) => {
                 return <PositionSummaryTable positionSummary={positionSummary}/>;
             case selectLeader.wholeList: 
                 return <SymbolDetail wholeItem={wholeItem}/>;
+            default:
+                return <SymbolDetail wholeItem={wholeItem}/>;
         }
+    }
+
+    const onClickWholeList = (props: CustomEvent)=>{
+        const { groupIdx, itemIdx } = props;
+        setOpenNav(selectLeader.wholeList);
+        let wholeItem = wholeGoups[groupIdx].items[itemIdx];
+        setWholItem(wholeItem);
     }
     return (
         <div className="container h-100">
@@ -74,11 +90,7 @@ const App = (props: dataType) => {
                     </div>
                     <WholeList 
                         wholeGoups={wholeGoups} 
-                        onClickWholeList={(groupIdx: number, itemIdx: number)=>{
-                            setOpenNav(selectLeader.wholeList);
-                            let wholeItem = wholeGoups[groupIdx].items[itemIdx];
-                            setWholItem(wholeItem);
-                        }}/>
+                        onClickWholeList={onClickWholeList}/>
                 </div>
                 <div className="basis-2/3"> 
                     <MainComponent />
