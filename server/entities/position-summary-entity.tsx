@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
 
-@Entity()
+@Entity({name:"position_summary"})
 export class PositionSummary {
   @PrimaryGeneratedColumn()
   Id: number

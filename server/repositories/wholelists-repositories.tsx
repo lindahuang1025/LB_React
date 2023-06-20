@@ -1,7 +1,10 @@
-import wholelistsData from "../mockData/wholelists-mock"
+import { getAppDataSource } from "../data-provider"
+import { Wholelists } from "../entities/wholelists-entity"
 
 const getWholelists = async () => {
-    return wholelistsData.Items;
+    const AppDataSource = await getAppDataSource()
+    const wholeListRepository = AppDataSource.getRepository(Wholelists)
+    return wholeListRepository.find()
 }
 
 export {
