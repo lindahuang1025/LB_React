@@ -1,6 +1,7 @@
 import { LeadersImage } from "@config/imgConfig";
+import wholelistsDataType from "../dataType/wholelistsDataType";
 
-const SymbolDetail = ({wholeItem}) =>{
+const SymbolDetail = ({wholeItem}: {wholeItem: wholelistsDataType}) =>{
     let { Symbol, 
         CompanyName, 
         Price, 

@@ -1,20 +1,9 @@
 import React from 'react';
 import { Table } from 'antd';
 import type { ColumnsType, TableProps } from 'antd/es/table';
+import positionSummaryDataType from "../dataType/positionSummaryDataType";
 
-interface DataType {
-  key: React.Key;
-  Symbol: string;
-  Position: string;
-  Weight: number;
-  EntryDate: string,
-  Entry: number,
-  AvgCost: number,
-  FromEntry: number,
-  FromAvgCost: number
-}
-
-const columns: ColumnsType<DataType> = [
+const columns: ColumnsType<positionSummaryDataType> = [
   {
     title: 'Symbol',
     dataIndex: 'Symbol',
@@ -57,7 +46,7 @@ const columns: ColumnsType<DataType> = [
   },
 ];
 
-const PositionSummaryTable = ({positionSummary}: {positionSummary: DataType[]}) =>{
+const PositionSummaryTable = ({positionSummary}: {positionSummary: positionSummaryDataType[]}) =>{
     return (<div>
         <div><b>POSITIONS SUMMARY</b></div>
         <div>Data as of June 16 close. Invested percentage: 87%</div>

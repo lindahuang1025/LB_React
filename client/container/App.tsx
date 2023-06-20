@@ -4,6 +4,10 @@ import WholeList from "../component/WholeList";
 import Article from "../component/Article";
 import PositionSummaryTable from "../component/PositionSummaryTable";
 import SymbolDetail from "../component/SymbolDetail";
+import wholelistsDataType from "../dataType/wholelistsDataType";
+import articleDataType from "../dataType/articleDataType";
+import positionSummaryDataType from "../dataType/positionSummaryDataType";
+import wholeGoupListDataType from "../dataType/wholeGoupListDataType";
 
 const selectLeader = {
     article: "Article",
@@ -11,14 +15,21 @@ const selectLeader = {
     wholeList: "WholsList"
 }
 
-const App = ({wholelists, article, positionSummary}) => {
+type IndexProps = {
+    wholelists: wholelistsDataType[], 
+    article: articleDataType,
+    positionSummary: positionSummaryDataType[]
+};
+
+const App = (props: IndexProps) => {
+    const { wholelists, article, positionSummary } = props;
     let [wholeGoups, setWholeGoups] = useState([]);
     let [openNav, setOpenNav] = useState(selectLeader.wholeList);
     let [wholeItem, setWholItem] = useState({});
     let positionSummaryClass =  openNav == selectLeader.positionSummary? "rounded text-primary": "";
     useEffect(()=>{
         let groups = wholelists.map(x=>x.Header).reduce((prev,cur) => prev.includes(cur) ? prev : [...prev,cur],[]);
-        let wholeGoupList = [];
+        let wholeGoupList: wholeGoupListDataType[] = [];
         groups.forEach(header=>{
             let groupItems = (wholelists || []).filter(x=>x.Header == header);
             wholeGoupList.push({
@@ -62,7 +73,7 @@ const App = ({wholelists, article, positionSummary}) => {
                     </div>
                     <WholeList 
                         wholeGoups={wholeGoups} 
-                        onClickWholeList={(groupIdx, itemIdx)=>{
+                        onClickWholeList={(groupIdx: number, itemIdx: number)=>{
                             setOpenNav(selectLeader.wholeList);
                             let wholeItem = wholeGoups[groupIdx].items[itemIdx];
                             setWholItem(wholeItem);

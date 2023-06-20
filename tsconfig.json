@@ -24,7 +24,8 @@
     ],
     "baseUrl": "client",
     "paths": {
-      "@config/*": ["config/*"]
+      "@config/*": ["config/*"],
+      "@dataType/*": ["dataType/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "client/component/ErrorHandler.jsx", "client"],

@@ -1,17 +1,33 @@
-import React from "react";
+import React, { Component, ErrorInfo, ReactNode } from "react";
 
-export default class ErrorHandler extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { error: null, info: null };
+interface Props {
+  children?: ReactNode;
+}
+
+interface State {
+  hasError: boolean;
+}
+
+class ErrorHandler extends Component<Props, State> {
+  public state: State = {
+    hasError: false
+  };
+
+  public static getDerivedStateFromError(_: Error): State {
+    return { hasError: true };
   }
-  componentDidCatch(error, info) {
-    this.setState({ error, info });
+
+  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error("Uncaught error:", error, errorInfo);
   }
-  render() {
-    if (this.state.error) {
-      return <p style={{ display: "none" }}>Something went wrong.</p>;
+
+  public render() {
+    if (this.state.hasError) {
+      return <h1>Sorry.. there was an error</h1>;
     }
+
     return this.props.children;
   }
 }
+
+export default ErrorHandler;

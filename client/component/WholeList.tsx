@@ -1,6 +1,9 @@
 import { useState } from "react";
+import wholeGoupListDataType from "../dataType/wholeGoupListDataType";
 
-const WholeList = ({wholeGoups, onClickWholeList}) =>{
+const WholeList = ({wholeGoups, onClickWholeList}: {
+    wholeGoups: wholeGoupListDataType[]
+}) =>{
     let [activeGoupItem, setActiveGoupItem] = useState([0, 0]);
     return (<>
     {wholeGoups.map((group, groupIdx)=>{
