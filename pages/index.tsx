@@ -1,21 +1,17 @@
 import PageContainer from "../client/container/PageContainer";
 import App from "../client/container/App";
 import ErrorHandler from "../client/component/ErrorHandler";
-import { getWholelists, getArticle, getPositionSummary } from "../client/services/lbService";
 import { NextPageContext } from 'next';
 import React from "react";
-import wholelistsDataType from "../client/dataType/wholelistsDataType";
-import articleDataType from "../client/dataType/articleDataType";
-import positionSummaryDataType from "../client/dataType/positionSummaryDataType";
-
-import { getMarketIndices } from "@/server/repositories/market-indices"
-import { MarketIndices } from "@/contracts"
+import { getMarketIndices } from "@/server/repositories/market-indices-respository";
+import { getArticle, getPositionSummary, getWholelists } from "@/server/repositories/leaders-respository";
+import { MarketIndicesContract, ArticleContract, WholelistsContract, PositionSummaryContract } from "@/contracts"
 
 interface dataType {
-  wholelists: wholelistsDataType[], 
-  article: articleDataType,
-  positionSummary: positionSummaryDataType[],
-  marketIndices: MarketIndices
+  wholelists: WholelistsContract[], 
+  article: ArticleContract,
+  positionSummary: PositionSummaryContract[],
+  marketIndices: MarketIndicesContract
 };
 
 const Index =(props: dataType) => {
@@ -29,16 +25,16 @@ const Index =(props: dataType) => {
 }
 
 Index.getInitialProps = async (ctx: NextPageContext) => {
-  const resWholelists = await getWholelists();
-  const resArticle = await getArticle();
-  const resPositionSummary = await getPositionSummary();
-  const marketIndices: MarketIndices = await getMarketIndices()
+  const wholelists: WholelistsContract[] = await getWholelists();
+  const article: ArticleContract = await getArticle();
+  const positionSummaryList: PositionSummaryContract[] = await getPositionSummary();
+  const marketIndices: MarketIndicesContract = await getMarketIndices()
 
   return { 
-    wholelists: resWholelists.data,
-    article: resArticle.data,
+    wholelists,
+    article,
     marketIndices,
-    positionSummary: resPositionSummary.data.map((item: positionSummaryDataType, index: number)=>{
+    positionSummary: positionSummaryList.map((item: PositionSummaryContract, index: number)=>{
       item.key=index;
       return item;
     })

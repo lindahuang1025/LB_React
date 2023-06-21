@@ -1,6 +1,6 @@
-import articleDataType from "@/client/dataType/articleDataType";
+import { ArticleContract } from "@/contracts";
 
-const Article = ({article}: {article: articleDataType}) =>{
+const Article = ({article}: {article: ArticleContract}) =>{
     return (
     <div className="bg-white border border-[#ddd] mt-[70px]">
         <div className="bg-primary text-white text-2xl px-4 py-5">

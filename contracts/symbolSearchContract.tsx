@@ -1,6 +1,6 @@
-import { ApiResponse } from "@/contracts/leaderboard"
+import { ApiResponse } from "@/contracts/apiResponse"
 
-export class SearchedSymbol {
+export class SearchedSymbolContract {
 	Symbol: string;
 	CompanyName: string;
 	Url: string;
@@ -19,11 +19,11 @@ export class SearchedSymbol {
 export class SymbolSearchResponse implements ApiResponse {
   ok: boolean;
   message: string;
-  data: SearchedSymbol[];
+  data: SearchedSymbolContract[];
 
   constructor(initializer?: any) {
     this.ok = initializer?.ok
     this.message = initializer?.message
-    this.data = initializer?.data.map((i: any) => new SearchedSymbol(i))
+    this.data = initializer?.data.map((i: any) => new SearchedSymbolContract(i))
   }
 }

@@ -4,10 +4,7 @@ import WholeList from "@/client/component/WholeList";
 import Article from "@/client/component/Article";
 import PositionSummaryTable from "@/client/component/PositionSummaryTable";
 import SymbolDetail from "@/client/component/SymbolDetail";
-import wholelistsDataType from "@/client/dataType/wholelistsDataType";
-import articleDataType from "@/client/dataType/articleDataType";
-import positionSummaryDataType from "@/client/dataType/positionSummaryDataType";
-import wholeGoupListDataType from "@/client/dataType/wholeGoupListDataType";
+import { WholelistsContract, ArticleContract, PositionSummaryContract, WholelistsGroupContract } from "@/contracts";
 
 const selectLeader = {
     article: "Article",
@@ -16,9 +13,9 @@ const selectLeader = {
 }
 
 interface dataType {
-    wholelists: wholelistsDataType[], 
-    article: articleDataType,
-    positionSummary: positionSummaryDataType[]
+    wholelists: WholelistsContract[], 
+    article: ArticleContract,
+    positionSummary: PositionSummaryContract[]
 };
 
 interface CustomEvent {
@@ -28,9 +25,9 @@ interface CustomEvent {
 
 const App = (props: dataType) => {
     const { wholelists, article, positionSummary } = props;
-    let [wholeGoups, setWholeGoups] = useState<wholeGoupListDataType[]>([]);
+    let [wholeGoups, setWholeGoups] = useState<WholelistsGroupContract[]>([]);
     let [openNav, setOpenNav] = useState<string>(selectLeader.wholeList);
-    let [wholeItem, setWholItem] = useState<wholelistsDataType>(Object);
+    let [wholeItem, setWholItem] = useState<WholelistsContract>(Object);
     let positionSummaryClass =  openNav == selectLeader.positionSummary? "rounded text-primary border-t-8 border-t-primary": "",
         articleActiveClass = openNav == selectLeader.article? "bg-primary": "bg-drakGreen",
         articleUnActiveClass = openNav == selectLeader.article? "bg-drakGreen": "bg-primary",
@@ -39,7 +36,7 @@ const App = (props: dataType) => {
     useEffect(()=>{
         let groups = wholelists.map(x=>x.Header)
             .reduce((prev: string[], cur:string) => prev.includes(cur) ? prev : [...prev,cur], []);
-        let wholeGoupList: wholeGoupListDataType[] = [];
+        let wholeGoupList: WholelistsGroupContract[] = [];
         groups.forEach((header: string) =>{
             let groupItems = (wholelists || []).filter(x=>x.Header == header);
             wholeGoupList.push({

@@ -10,9 +10,13 @@ import tour from "@/public/img/tour.svg";
 import arrowup from "@/public/img/arrowup.png";
 import close from "@/public/img/close.svg";
 import { searchSymbols } from "@/client/services/lbService"
-import { HeaderProps, ApiRequestState, SearchedSymbol, SymbolSearchResponse } from "@/contracts"
+import { ApiRequestState, SearchedSymbolContract, SymbolSearchResponse, MarketIndicesContract } from "@/contracts"
 
-const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
+interface dataType {
+  marketIndices: MarketIndicesContract;
+};
+
+const Header: React.FC<dataType> = (props: dataType) => {
 
   const [renderAlert, setRenderAlert] = React.useState<boolean>(true)
 
@@ -26,13 +30,13 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
 
   const [menuOpen, setMenuOpen] = React.useState<boolean>(false)
 
-  const [searchedSymbols, setSearchedSymbols] = React.useState<SearchedSymbol[]>([])
+  const [searchedSymbols, setSearchedSymbols] = React.useState<SearchedSymbolContract[]>([])
   const [searchSymbolsStatus, setSearchSymbolsStatus] = React.useState<ApiRequestState>(ApiRequestState.SUCCESS)
   const onSearchSymbols = async (searchText: string = "") => {
     setSearchSymbolsStatus(ApiRequestState.PENDING)
     try {
       const response: SymbolSearchResponse = await searchSymbols(searchText)
-      setSearchedSymbols(response.data as SearchedSymbol[])
+      setSearchedSymbols(response.data as SearchedSymbolContract[])
     } catch (error) {
       setSearchSymbolsStatus(ApiRequestState.ERROR)
     } finally {

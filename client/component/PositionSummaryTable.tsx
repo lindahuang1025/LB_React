@@ -1,9 +1,9 @@
 import React from 'react';
 import { Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import positionSummaryDataType from "@/client/dataType/positionSummaryDataType";
+import { PositionSummaryContract } from "@/contracts";
 
-const columns: ColumnsType<positionSummaryDataType> = [
+const columns: ColumnsType<PositionSummaryContract> = [
   {
     title: 'Symbol',
     dataIndex: 'Symbol',
@@ -46,7 +46,7 @@ const columns: ColumnsType<positionSummaryDataType> = [
   },
 ];
 
-const PositionSummaryTable = ({positionSummary}: {positionSummary: positionSummaryDataType[]}) =>{
+const PositionSummaryTable = ({positionSummary}: {positionSummary: PositionSummaryContract[]}) =>{
     return (
     <div className='mt-[25px]'>
       <div className='text-lg leading-[22px] text-[#222] font-normal'>

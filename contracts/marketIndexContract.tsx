@@ -1,4 +1,4 @@
-class MarketIndex {
+class MarketIndexContract {
   Symbol: string;
   IndexValueChange: string;
   IndexValue: string;
@@ -56,8 +56,8 @@ enum MarketStatus {
   AFTERHOURS = "AFTER HOURS",
 }
 
-export class MarketIndices {
-  marketIndices: MarketIndex[];
+export class MarketIndicesContract {
+  marketIndices: MarketIndexContract[];
   etfIndices: EtfIndex[];
   UpdateTime: string;
   TimeStamp: string;
@@ -66,7 +66,7 @@ export class MarketIndices {
   CurrentMarketStatus: MarketStatus;
 
   constructor(initializer?: any) {
-    this.marketIndices = initializer?.marketIndices.map((i: any) => new MarketIndex(i)) ?? [];
+    this.marketIndices = initializer?.marketIndices.map((i: any) => new MarketIndexContract(i)) ?? [];
     this.etfIndices = initializer?.etfIndices.map((i: any) => new EtfIndex(i)) ?? [];
     this.UpdateTime = initializer?.UpdateTime;
     this.TimeStamp = initializer?.TimeStamp;

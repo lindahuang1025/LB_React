@@ -1,9 +1,9 @@
 import { LeadersImage, GreenArrowImage, RedArrowImage } from "@/client/config/imgConfig";
-import wholelistsDataType from "@/client/dataType/wholelistsDataType";
+import { WholelistsContract } from "@/contracts";
 import Image from 'next/image';
 import numberFormat from "@/client/utils/numberFormat";
 
-const SymbolDetail = ({wholeItem}: {wholeItem: wholelistsDataType}) =>{
+const SymbolDetail = ({wholeItem}: {wholeItem: WholelistsContract}) =>{
     let { Symbol, 
         CompanyName, 
         Price, 

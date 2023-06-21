@@ -8,3 +8,5 @@ temp/
 .env
 
 /server/mockData
+
+docker-compose.yaml

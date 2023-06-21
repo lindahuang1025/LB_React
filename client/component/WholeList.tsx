@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import wholeGoupListDataType from "@/client/dataType/wholeGoupListDataType";
+import { WholelistsGroupContract } from "@/contracts";
 import { CaretUpOutlined, CaretDownOutlined } from "@ant-design/icons";
 import { GreenArrowImage, RedArrowImage } from "@/client/config/imgConfig";
 import numberFormat from "@/client/utils/numberFormat";
 import Image from 'next/image'
 
 interface dataType {
-    wholeGoups: wholeGoupListDataType[],
+    wholeGoups: WholelistsGroupContract[],
     isActiveWholeList: boolean,
     onClickWholeList: (n: CustomEvent) => void
 };
