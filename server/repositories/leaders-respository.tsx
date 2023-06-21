@@ -16,10 +16,12 @@ async function getPositionSummary(): Promise<PositionSummaryContract[]> {
 
 async function getWholelists(): Promise<WholelistsContract[]> {
     const wholelistsData: {
-        ListName: string,
-        Items: WholelistsContract[]
+        Items: any[]
     } = require("@/server/mockData/wholelists-mock.json");
-    return Promise.resolve(wholelistsData.Items);
+    const wholelists: WholelistsContract[] = wholelistsData.Items.map(item => {
+        return new WholelistsContract(item);
+    });
+    return Promise.resolve(wholelists);
 }
 
 export {
