@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { SearchedSymbol, SymbolSearchResponse } from "@/contracts"
-import { getSearchedSymbols } from "@/server/repositories/market-indices"
+import { getSearchedSymbols } from "@/server/repositories/market-indices-respository"
 
 async function searchSymbol(req: NextApiRequest, res: NextApiResponse) {
   if (!req.query.search) {
