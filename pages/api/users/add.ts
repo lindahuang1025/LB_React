@@ -1,7 +1,7 @@
 
-import { addUser } from "../../../server/repositories/user-repository"
+import { addUser } from "@/server/repositories/user-repository"
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { User } from "../../../server/entities/user-entity";
+import { User } from "@/server/entities/user-entity";
 
 /**
  * @swagger

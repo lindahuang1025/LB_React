@@ -1,5 +1,5 @@
 
-import { getPositionSummary } from "../../../server/repositories/position-summary-repositories"
+import { getPositionSummary } from "@/server/repositories/leaders-respository"
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 /**

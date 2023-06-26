@@ -1,5 +1,5 @@
 
-import { getAllUser } from "../../../server/repositories/user-repository"
+import { getAllUser } from "@/server/repositories/user-repository"
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 /**

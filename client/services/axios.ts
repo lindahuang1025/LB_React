@@ -1,4 +1,4 @@
-import { baseUrl } from "../config/config";
+import { baseUrl } from "@/client/config/config";
 import axios, { AxiosRequestConfig } from "axios";
 
 export default function Axios(request: AxiosRequestConfig) {

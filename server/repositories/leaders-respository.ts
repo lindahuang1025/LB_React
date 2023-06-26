@@ -24,8 +24,13 @@ async function getWholelists(): Promise<WholelistsContract[]> {
     return Promise.resolve(wholelists);
 }
 
+async function getRelatedNews(): Promise<{}> {
+    return Promise.resolve({});
+}
+
 export {
     getArticle,
     getPositionSummary,
-    getWholelists
+    getWholelists,
+    getRelatedNews
 }

@@ -1,10 +1,10 @@
 import { DataSourceOptions } from "typeorm"
 import * as path from 'path';
-import { User } from "./entities/user-entity"
-import { Article } from "./entities/article-entity"
-import { Wholelists } from "./entities/wholelists-entity"
-import { PositionSummary } from "./entities/position-summary-entity"
-import { RelatedNews } from "./entities/related-news-entity"
+import { User } from "@/server/entities/user-entity"
+import { Article } from "@/server/entities/article-entity"
+import { Wholelists } from "@/server/entities/wholelists-entity"
+import { PositionSummary } from "@/server/entities/position-summary-entity"
+import { RelatedNews } from "@/server/entities/related-news-entity"
 import dotenv from 'dotenv';
 
 const envFile = '.env';

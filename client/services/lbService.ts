@@ -1,4 +1,4 @@
-import request from "./axios";
+import request from "@/client/services/axios";
 import { SymbolSearchResponse } from "@/contracts"
 
 function getArticle() {

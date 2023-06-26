@@ -1,5 +1,5 @@
 
-import { getRelatedNews } from "../../../server/repositories/related-news-repositories"
+import { getRelatedNews } from "@/server/repositories/leaders-respository"
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 /**

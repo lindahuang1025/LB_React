@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { connectionSource } from "./ormconfig";
+import { connectionSource } from "@/server/ormconfig";
 
 let AppDataSource: DataSource;
 export const getAppDataSource = async (): Promise<DataSource> => {

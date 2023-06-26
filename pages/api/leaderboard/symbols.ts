@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { SearchedSymbol, SymbolSearchResponse } from "@/contracts"
+import { SearchedSymbolContract, SymbolSearchResponse } from "@/contracts"
 import { getSearchedSymbols } from "@/server/repositories/market-indices-respository"
 
 async function searchSymbol(req: NextApiRequest, res: NextApiResponse) {
@@ -8,7 +8,7 @@ async function searchSymbol(req: NextApiRequest, res: NextApiResponse) {
     const emptyResonseData: any = { ok: true, message: "success", data: [] };
     return res.status(200).json(new SymbolSearchResponse(emptyResonseData));
   }
-  const searchedSymbols: SearchedSymbol[] = await getSearchedSymbols();
+  const searchedSymbols: SearchedSymbolContract[] = await getSearchedSymbols();
   const responseData: any = { ok: true, message: "success", data: searchedSymbols };
   res.status(200).json(new SymbolSearchResponse(responseData));
 }

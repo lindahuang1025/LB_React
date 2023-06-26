@@ -1,6 +1,6 @@
-import PageContainer from "../client/container/PageContainer";
-import App from "../client/container/App";
-import ErrorHandler from "../client/component/ErrorHandler";
+import PageContainer from "@/client/container/PageContainer";
+import App from "@/client/container/App";
+import ErrorHandler from "@/client/component/ErrorHandler";
 import { NextPageContext } from 'next';
 import React from "react";
 import { getMarketIndices } from "@/server/repositories/market-indices-respository";

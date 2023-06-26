@@ -1,5 +1,5 @@
 
-import { deleteUserById, getUserById } from "../../../server/repositories/user-repository"
+import { deleteUserById, getUserById } from "@/server/repositories/user-repository"
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 /**

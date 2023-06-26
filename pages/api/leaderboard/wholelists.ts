@@ -1,5 +1,5 @@
 
-import { getWholelists } from "../../../server/repositories/wholelists-repositories"
+import { getWholelists } from "@/server/repositories/leaders-respository"
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 /**
