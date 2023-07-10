@@ -24,7 +24,7 @@ module.exports = {
       white: '#fff',
       black: "black",
       gray: "#000",
-      red: "#d0021b",
+      red: "#d0021b"
     },
     fontFamily: {
       lato: ["Lato"]

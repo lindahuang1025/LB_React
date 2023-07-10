@@ -11,7 +11,7 @@ import Footer from "@/client/container/Footer";
 
 import ErrorHandler from "@/client/component/ErrorHandler";
 import { ArrowDownOutlined, ArrowUpOutlined, CaretDownOutlined, DownOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Dropdown, MenuProps, Space } from "antd";
+import { Button, Dropdown, Input, MenuProps, Space } from "antd";
 import { getStockList } from "@/server/repositories/market-responsitory";
 
 interface dataType {
@@ -103,65 +103,82 @@ const Index = (props: dataType) => {
         <ErrorHandler>
             <Header marketIndices={props.marketIndices} />
         </ErrorHandler>
-        <div className="w-full bg-drakGreen h-[60px] ">
-            <div className="desktop:w-[1339px] laptop:w-[970px] tablet:w-[760px] mx-auto my-2 py-4">
-                <div className="desktop:w-[1339px] laptop:w-[970px] tablet:w-[760px] text-white mx-auto">
-                    <ul className="font-lato hidden desktop:flex">
-                        <span className="mt-[15px]">My Stock List</span>
-                        <li className={`h-12 leading-[48px] px-4 text-white text-xl font-light hover:bg-[#67C501] hover:text-[#484848] cursor-pointer flex items-center relative group`}>
-                            <span className="w-[40px] pl-[20px] mx-[50px]"><DownOutlined className="text-xs ml-1 text-bold" /></span>
-                            <ul className="hidden absolute w-[280px] group-hover:block z-10 top-[48px] bg-white border border-[#DDDDDD] rounded left-0 py-2 shadow-xl">
-                                <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">My Stock List</li>
-                                <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">My Stock List 2</li>
-                                <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">My Stock List 3</li>
-                                <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">My Stock List 4</li>
-                            </ul>
-                        </li>
-                    </ul>
+        <div className="container">
+            <div className="mt-2">
+                <Button className="ml-4 text-base">Create</Button>
+                <Button className="ml-4 text-base">Active</Button>
+                <Button className="ml-4 text-base">Triggred</Button>
+            </div>
+            <div className="mt-2">
+                <Button className="ml-4 text-base">Symbol</Button>
+                <Button className="ml-4 text-base">Lists</Button>
+            </div>
+
+            <div className="border bg-white p-5 border-[#ddd] border-t-8 border-t-primary">
+                <div className="flex flex-col tablet:flex-row min-w-full ">
+                    <div className="w-full tablet:w-1/2 tablet:ml-auto">
+                        <div className="text-[14px] text-white text-center px-5 py-2 h-[12px] grow bg-[#31a700]">
+                            Symbol
+                        </div>
+                        <div className="text-[#222222] text-[30px] bg-white h-[20px]  text-center px-5 py-2 grow bg-[#31a700] border-[1px] border-[#67c500] py-[40px] px-[25px]">
+                        </div>
+                    </div>
+                    <div className="w-full tablet:w-1/2 tablet:mr-auto tablet:ml-[45px]">
+                        <div className="text-[14px] text-white text-center px-5 py-2 h-[12px] grow bg-[#31a700]">
+                            Price
+                        </div>
+                        <div className="text-[#222222] text-[14px] bg-white h-[20px]  text-center px-5 py-2 grow bg-[#31a700] border-[1px] border-[#67c500]  px-[25px]">
+                        </div>
+                    </div>
+                </div>
+                <p className="mb-1">Moving Averages:</p>
+                <div className="flex flex-col tablet:flex-row min-w-full ">
+                    <div className="w-full tablet:w-1/2 tablet:ml-auto">
+                        <div className="text-[14px] text-white text-center px-5 py-2 h-[12px] grow bg-[#31a700]">
+                            Daily Chart
+                        </div>
+                        <div className="text-[#222222] text-[14px] bg-white h-[20px]  text-left  grow bg-[#31a700] border-[1px] border-[#67c500]">
+                            <div className="border bg-white p-2 border-[#ddd] border-b-1 border-t-primary">10-day</div>
+                            <div className="border bg-white p-2 border-[#ddd] border-b-1 border-t-primary">21-day EMA</div>
+                            <div className="border bg-white p-2 border-[#ddd] border-b-1 border-t-primary">50-day</div>
+                            <div className="border bg-white p-2 border-[#ddd] border-b-1 border-t-primary">200-day</div>
+                        </div>
+                    </div>
+                    <div className="w-full tablet:w-1/2 tablet:mr-auto tablet:ml-[45px]">
+                        <div className="text-[14px] text-white text-center px-5 py-2 h-[12px] grow bg-[#31a700]">
+                            Weekly Chart
+                        </div>
+                        <div className="text-[#222222] text-[14px] bg-white h-[20px]  text-left  grow bg-[#31a700] border-[1px] border-[#67c500]">
+                            <div className="border bg-white p-2 border-[#ddd] border-b-1 border-t-primary">10-Week</div>
+                            <div className="border bg-white p-2 border-[#ddd] border-b-1 border-t-primary">40-Week</div>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex flex-col tablet:flex-row min-w-full ">
+                    <div className="w-full tablet:w-1/2 tablet:ml-auto">
+                        <p className="mb-1">Email Notification Settings:</p>
+                        <Input placeholder="wangqx@shinetechsoftware.com" />
+                        <p>Desktop Notification Settings:</p>
+                        <Input placeholder="Audio" />
+                    </div>
+                    <div className="w-full tablet:w-1/2 tablet:mr-auto tablet:ml-[45px]">
+                        <p>Note:</p>
+                        <Input.TextArea
+                            placeholder="input note"
+                            autoSize={{ minRows: 3, maxRows: 5 }}
+                        />
+                        <div className="text-right text-[12px] text-[#222222]">100 Characters maximum</div>
+                    </div>
+                </div>
+                <div className="flex flex-col tablet:flex-row min-w-full ">
+                    <div className="w-full tablet:w-1/2 tablet:ml-auto"></div>
+                    <div className="w-full tablet:w-1/2 tablet:mr-auto tablet:ml-[45px]">
+                    <Button className="ml-4 text-base w-full">Save</Button>
+                    </div>
                 </div>
             </div>
         </div>
-        <div className="container">
-            <Dropdown menu={menuProps} className="mr-3">
-                <Button>
-                    <Space className="text-base">
-                        Price&Volume
-                        <DownOutlined />
-                    </Space>
-                </Button>
-            </Dropdown>
-            <Button className="ml-4 text-base">Edit Stock List</Button>
-            <div className="tablet:hidden">
-                {
-                    wholelists.map(item => {
-                        return <SymbolMobileItem _symbol={item} />
-                    })
-                }
-            </div>
-            <div className="mt-5 hidden tablet:block">
-                <table className="border-collapse table-auto w-full text-sm w-full">
-                    <thead>
-                        <tr className="bg-primary text-white">
-                            <th className="p-4">Symbol</th>
-                            <th className="p-4">CompanyName</th>
-                            <th className="p-4">Price</th>
-                            <th className="p-4">PriceChg.</th>
-                            <th className="p-4">Price%Chg.</th>
-                            <th className="p-4">Volume</th>
-                            <th className="p-4">Volume%Chg.</th>
-                        </tr>
-                    </thead>
-                    <tbody className="bg-white dark:bg-slate-800">
-                        {
-                            wholelists.map(item => {
-                                return <SymbolItem _symbol={item} />
-                            })
-                        }
-                    </tbody>
-                </table>
 
-            </div>
-        </div>
         <ErrorHandler>
             <Footer />
         </ErrorHandler>

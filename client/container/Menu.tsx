@@ -49,7 +49,7 @@ const Menu: React.FC<{}> = (props: {}) => {
                   <CaretDownOutlined className="text-xs ml-1" />
                 </div>
                 <ul className={`${mobileOpenableMenuClassNames} ${2 === openSubMenuIndex ? "h-[160px]" : "h-0"}`}>
-                <li className="px-6 hover:bg-[#EEEEEE] text-base py-2"><Link href="/market/thebigpicture" className="no-underline hover:no-underline text-white" >The Big Picture</Link></li>
+                  <li className="px-6 hover:bg-[#EEEEEE] text-base py-2"><Link href="/market/thebigpicture" className="no-underline hover:no-underline text-white" >The Big Picture</Link></li>
                   <li className="px-6 text-base py-2 cursor-not-allowed font-light text-[#888]">Stock Market Today</li>
                   <li className="px-6 text-base py-2 cursor-not-allowed font-light text-[#888]">ETF Market Strategy</li>
                   <li className="px-6 text-base py-2 cursor-not-allowed font-light text-[#888]">Market School</li>
@@ -58,7 +58,7 @@ const Menu: React.FC<{}> = (props: {}) => {
               </li>
               <li>
                 <div className="flex justify-between p-4 bg-black">
-                <span> <Link href="/sectorleaders" className="text-white no-underline hover:no-underline" >IBD Sector Leaders</Link></span>
+                  <span> <Link href="/sectorleaders" className="text-white no-underline hover:no-underline" >IBD Sector Leaders</Link></span>
                 </div>
                 <Divider className="m-0" />
               </li>
@@ -68,38 +68,38 @@ const Menu: React.FC<{}> = (props: {}) => {
                   <CaretDownOutlined className="text-xs ml-1" />
                 </div>
                 <ul className={`${mobileOpenableMenuClassNames} ${3 === openSubMenuIndex ? "h-[80px]" : "h-0"}`}>
-                <li className="px-6 hover:bg-[#EEEEEE] text-base py-2 text-[#333]"><Link href="/top10" className="no-underline hover:no-underline text-whiteblock tablet:hidden text-lg" >Top 10</Link></li>
+                  <li className="px-6 hover:bg-[#EEEEEE] text-base py-2 text-[#333]"><Link href="/top10" className="no-underline hover:no-underline text-whiteblock tablet:hidden text-lg" >Top 10</Link></li>
                   <li className="px-6 text-base py-2 cursor-not-allowed font-light text-[#888]">Full List</li>
                 </ul>
                 <Divider className="m-0" />
               </li>
               <li>
                 <div className="flex justify-between p-4 bg-black">
-                 <Link href="/stockspotlight" className="text-white no-underline hover:no-underline" >Stock Spotlight</Link>
+                  <Link href="/stockspotlight" className="text-white no-underline hover:no-underline" >Stock Spotlight</Link>
                 </div>
                 <Divider className="m-0" />
               </li>
               <li>
                 <div className="flex justify-between p-4 bg-black">
-                <Link href="/recentaction" className="text-white no-underline hover:no-underline" >Stocks Added/Removed</Link>
+                  <Link href="/recentaction" className="text-white no-underline hover:no-underline" >Stocks Added/Removed</Link>
                 </div>
                 <Divider className="m-0" />
               </li>
               <li>
                 <div className="flex justify-between p-4 bg-black">
-                <Link href="/mystocklists" className="text-white no-underline hover:no-underline" >My Stock Lists</Link>
+                  <Link href="/mystocklists" className="text-white no-underline hover:no-underline" >My Stock Lists</Link>
                 </div>
                 <Divider className="m-0" />
               </li>
               <li>
                 <div className="flex justify-between p-4 bg-black">
-                  <span>My Alerts</span>
+                  <Link href="/myalert" className="text-white no-underline hover:no-underline" >My Alerts</Link>
                 </div>
                 <Divider className="m-0" />
               </li>
               <li>
                 <div className="flex justify-between p-4 bg-black">
-                  <span>FAQ</span>
+                  <a className="text-white no-underline hover:no-underline" href="https://www.investors.com/how-to-invest/leaderboard-faq-growth-investing-strategies-position-sizing/">FAQ</a>
                 </div>
                 <Divider className="m-0" />
               </li>
@@ -133,13 +133,13 @@ const Menu: React.FC<{}> = (props: {}) => {
             </ul>
           </li>
           <li className={desktopMenuClassNames}>
-          <span> <Link href="/sectorleaders" className="text-white no-underline hover:no-underline" >IBD Sector Leaders</Link></span>
+            <span> <Link href="/sectorleaders" className="text-white no-underline hover:no-underline" >IBD Sector Leaders</Link></span>
           </li>
           <li className={`${desktopMenuClassNames} relative group`}>
             <span>IBD 50</span>
             <CaretDownOutlined className="text-xs ml-1" />
             <ul className="hidden absolute w-[280px] group-hover:block z-10 top-[48px] bg-white border border-[#DDDDDD] rounded left-0 py-2 shadow-xl">
-            <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 text-[#333]"><Link href="/top10" className="no-underline hover:no-underline" >Top 10</Link></li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 text-[#333]"><Link href="/top10" className="no-underline hover:no-underline" >Top 10</Link></li>
               <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">Full List</li>
             </ul>
           </li>
@@ -153,10 +153,10 @@ const Menu: React.FC<{}> = (props: {}) => {
             <Link href="/mystocklists" className="text-white no-underline hover:no-underline" >My Stock Lists</Link>
           </li>
           <li className={desktopMenuClassNames}>
-            <span>My Alerts</span>
+            <Link href="/myalert" className="text-white no-underline hover:no-underline" >My Alerts</Link>
           </li>
           <li className={desktopMenuClassNames}>
-            <span>FAQ</span>
+            <span><a className="text-white no-underline hover:no-underline" href="https://www.investors.com/how-to-invest/leaderboard-faq-growth-investing-strategies-position-sizing/">FAQ</a></span>
           </li>
         </ul>
       </div>
