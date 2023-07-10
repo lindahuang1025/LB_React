@@ -3,7 +3,6 @@ import { NextPageContext } from 'next';
 import { getMarketIndices } from "@/server/repositories/market-indices-respository";
 import { getArticle, getPositionSummary, getWholelists } from "@/server/repositories/leaders-respository";
 import { MarketIndicesContract, ArticleContract, WholelistsContract, PositionSummaryContract } from "@/contracts"
-import { Settings } from "@/contracts/marketContract";
 
 import Head from "next/head";
 import Header from "@/client/container/Header";
@@ -16,10 +15,7 @@ interface dataType {
   wholelists: WholelistsContract[], 
   article: ArticleContract,
   positionSummary: PositionSummaryContract[],
-  marketIndices: MarketIndicesContract,
-  title:string,
-  titleMessage:string,
-  settings :Settings
+  marketIndices: MarketIndicesContract
 };
 
 const Index =(props: dataType) => {
@@ -47,9 +43,6 @@ Index.getInitialProps = async (ctx: NextPageContext) => {
     wholelists,
     article,
     marketIndices,
-    title:"LEADERS LIST",
-    titleMessage :"Nvidia Shines, CELH Lags With Leaders Mixed After Fed",
-    settings:{showBanner:false,bannerText:"",showSymbolGroup:true},
     positionSummary: positionSummaryList.map((item: PositionSummaryContract, index: number)=>{
       item.key=index;
       return item;

@@ -2,7 +2,7 @@ import { ArticleContract } from "@/contracts";
 
 const Article = ({article}: {article: ArticleContract}) =>{
     return (
-    <div className="bg-white border border-[#ddd] mt-[70px]">
+    <div className="bg-white ml-2">
         <div className="bg-primary text-white text-2xl px-4 py-5">
             {article.Headline}
         </div>
