@@ -1,8 +1,8 @@
 import React from "react"
 import Image from 'next/image';
+import Link from 'next/link';
 import { Drawer, Divider } from "antd";
 import { CloseOutlined, SearchOutlined, MenuOutlined, CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
-
 import logo from "@/public/img/logo.svg";
 import title from "@/public/img/title.svg";
 import concierge from "@/public/img/concierge.svg";
@@ -100,7 +100,7 @@ const Header: React.FC<dataType> = (props: dataType) => {
             </div>
             <div className="w-[24px] -ml-[24px]">
               <SearchOutlined className="text-xs text-[#999999] cursor-pointer"
-                onClick={e => {handleSearchChange(searchText);searchElement.current?.focus();}}
+                onClick={e => { handleSearchChange(searchText); searchElement.current?.focus(); }}
               />
             </div>
             {searchInputFocused &&
@@ -108,21 +108,21 @@ const Header: React.FC<dataType> = (props: dataType) => {
                 {searchSymbolsStatus === ApiRequestState.ERROR
                   ? <div className="p-2">Server Error!</div>
                   : searchSymbolsStatus === ApiRequestState.PENDING
-                  ? <div className="p-2">Searching...</div>
-                  : searchedSymbols.length === 0
-                  ? <div className="p-2">Please input symbol to search!</div>
-                  : <ul className="">
-                    {searchedSymbols.map(s =>
-                      <li key={s.Symbol} className=" cursor-pointer hover:bg-[#EEEEEE]"
-                        onClick={e => console.log("select symbol")}
-                      >
-                        <div className="px-3 py-2 flex justify-between">
-                          <span className="font-bold">{s.Symbol}</span>
-                          <span className="font-light">{s.CompanyName}</span>
-                        </div>
-                        <Divider className="m-0" />
-                      </li>)}
-                  </ul>
+                    ? <div className="p-2">Searching...</div>
+                    : searchedSymbols.length === 0
+                      ? <div className="p-2">Please input symbol to search!</div>
+                      : <ul className="">
+                        {searchedSymbols.map(s =>
+                          <li key={s.Symbol} className=" cursor-pointer hover:bg-[#EEEEEE]"
+                            onClick={e => console.log("select symbol")}
+                          >
+                            <div className="px-3 py-2 flex justify-between">
+                              <span className="font-bold">{s.Symbol}</span>
+                              <span className="font-light">{s.CompanyName}</span>
+                            </div>
+                            <Divider className="m-0" />
+                          </li>)}
+                      </ul>
                 }
               </div>
             }
@@ -169,32 +169,32 @@ const Header: React.FC<dataType> = (props: dataType) => {
             <span>Leaders</span>
             <CaretDownOutlined className="text-xs ml-1" />
             <ul className="hidden absolute w-[280px] group-hover:block z-10 top-[48px] bg-white border border-[#DDDDDD] rounded left-0 py-2 shadow-xl">
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">Leaders Near A Buy Point</li>
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">Leaders</li>
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">Earnings Options</li>
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">Short Sales</li>
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">Leaders Watchlist</li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">Leaders Near A Buy Point</li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 text-[#333]" ><Link href="/" className="no-underline hover:no-underline" >Leaders</Link></li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">Earnings Options</li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">Short Sales</li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">Leaders Watchlist</li>
             </ul>
           </li>
           <li className="h-12 leading-[48px] px-4 text-white text-xl font-light hover:bg-[#67C501] hover:text-[#484848] cursor-pointer flex items-center relative group">
             <span>Market</span>
             <CaretDownOutlined className="text-xs ml-1" />
             <ul className="hidden absolute w-[280px] group-hover:block z-10 top-[48px] bg-white border border-[#DDDDDD] rounded left-0 py-2 shadow-xl">
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">The Big Picture</li>
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">Stock Market Today</li>
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">ETF Market Strategy</li>
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">Market School</li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1"><Link href="/market/thebigpicture" className="no-underline hover:no-underline" >The Big Picture</Link></li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">Stock Market Today</li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">ETF Market Strategy</li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">Market School</li>
             </ul>
           </li>
           <li className="h-12 leading-[48px] px-4 text-white text-xl font-light hover:bg-[#67C501] hover:text-[#484848] cursor-pointer flex items-center">
-            <span>IBD Sector Leaders</span>
+            <span> <Link href="/sectorleaders" className="text-white no-underline hover:no-underline" >IBD Sector Leaders</Link></span>
           </li>
           <li className="h-12 leading-[48px] px-4 text-white text-xl font-light hover:bg-[#67C501] hover:text-[#484848] cursor-pointer flex items-center relative group">
             <span>IBD 50</span>
             <CaretDownOutlined className="text-xs ml-1" />
             <ul className="hidden absolute w-[280px] group-hover:block z-10 top-[48px] bg-white border border-[#DDDDDD] rounded left-0 py-2 shadow-xl">
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">Top 10</li>
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">Full List</li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 text-[#333]"><Link href="/top10" className="no-underline hover:no-underline" >Top 10</Link></li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">Full List</li>
             </ul>
           </li>
           <li className="h-12 leading-[48px] px-4 text-white text-xl font-light hover:bg-[#67C501] hover:text-[#484848] cursor-pointer flex items-center">
@@ -243,7 +243,7 @@ const Header: React.FC<dataType> = (props: dataType) => {
             <label className="font-light font-lato text-xs w-[100px] inline-block underline">PREVIOUS CLOSE:</label>
             <div className="inline-block">
               <ul className="flex text-sm font-light font-lato flex-wrap">
-                {props.marketIndices.marketIndices.map(indexData => 
+                {props.marketIndices.marketIndices.map(indexData =>
                   <li key={indexData.Symbol} className="px-3 cursor-pointer">
                     <div className="flex items-center h-5">
                       <span className="pr-1">{indexData.IndexAbbr}</span>
@@ -251,8 +251,8 @@ const Header: React.FC<dataType> = (props: dataType) => {
                     </div>
                     <div className="flex items-center font-normal">
                       {indexData.IsUp
-                        ? <CaretUpOutlined className="text-[#489E25] text-base"/>
-                        : <CaretDownOutlined className="text-[#D01D1B] text-base"/>
+                        ? <CaretUpOutlined className="text-[#489E25] text-base" />
+                        : <CaretDownOutlined className="text-[#D01D1B] text-base" />
                       }
                       <span className={indexData.IsUp ? "text-[#489E25] mr-1" : "text-[#D01D1B] mr-1"}>{indexData.IndexValueChange.trim()}</span>
                       <span className={indexData.IsUp ? "text-[#489E25]" : "text-[#D01D1B]"}>({indexData.IndexValuePctChange.trim()})</span>
@@ -266,13 +266,13 @@ const Header: React.FC<dataType> = (props: dataType) => {
             <label className="font-light font-lato text-xs w-[100px] inline-block underline">AFTER HOURS:</label>
             <div className="inline-block">
               <ul className="flex text-sm font-light font-lato">
-                {props.marketIndices.etfIndices.map(indexData => 
+                {props.marketIndices.etfIndices.map(indexData =>
                   <li key={indexData.Symbol} className="px-2 cursor-pointer">
                     <div className="flex items-center text-xs items-center">
                       <span className="pr-1">{indexData.Symbol}</span>
                       {Number.parseFloat(indexData.PricePctChange) > 0
-                        ? <CaretUpOutlined className="text-[#489E25] text-sm"/>
-                        : <CaretDownOutlined className="text-[#D01D1B] text-sm"/>
+                        ? <CaretUpOutlined className="text-[#489E25] text-sm" />
+                        : <CaretDownOutlined className="text-[#D01D1B] text-sm" />
                       }
                       <span>{Number.parseFloat(indexData.PricePctChange).toFixed(2)}%</span>
                     </div>

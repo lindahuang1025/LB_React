@@ -24,6 +24,17 @@ async function getWholelists(): Promise<WholelistsContract[]> {
     return Promise.resolve(wholelists);
 }
 
+async function getSectorLeaderlists(): Promise<WholelistsContract[]> {
+    const wholelistsData: {
+        Items: any[]
+    } = require("@/server/mockData/sectorleaders.json");
+    const wholelists: WholelistsContract[] = wholelistsData.Items.map(item => {
+        return new WholelistsContract(item);
+    });
+    return Promise.resolve(wholelists);
+}
+
+
 async function getRelatedNews(): Promise<{}> {
     return Promise.resolve({});
 }
@@ -32,5 +43,6 @@ export {
     getArticle,
     getPositionSummary,
     getWholelists,
-    getRelatedNews
+    getRelatedNews,
+    getSectorLeaderlists
 }

@@ -4,9 +4,10 @@ import ErrorHandler from "@/client/component/ErrorHandler";
 import { NextPageContext } from 'next';
 import React from "react";
 import { getMarketIndices } from "@/server/repositories/market-indices-respository";
-import { getArticle, getPositionSummary, getWholelists } from "@/server/repositories/leaders-respository";
+import { getSectorLeaderlists } from "@/server/repositories/leaders-respository";
 import { MarketIndicesContract, ArticleContract, WholelistsContract, PositionSummaryContract } from "@/contracts"
 import { Settings } from "@/contracts/marketContract";
+import { getIntradayArticle } from "@/server/repositories/market-responsitory";
 
 interface dataType {
   wholelists: WholelistsContract[], 
@@ -15,7 +16,7 @@ interface dataType {
   marketIndices: MarketIndicesContract,
   title:string,
   titleMessage:string,
-  settings :Settings
+  settings:Settings
 };
 
 const Index =(props: dataType) => {
@@ -29,22 +30,23 @@ const Index =(props: dataType) => {
 }
 
 Index.getInitialProps = async (ctx: NextPageContext) => {
-  const wholelists: WholelistsContract[] = await getWholelists();
-  const article: ArticleContract = await getArticle();
-  const positionSummaryList: PositionSummaryContract[] = await getPositionSummary();
+  const wholelists: WholelistsContract[] = await getSectorLeaderlists();
+  const article: ArticleContract = await getIntradayArticle();
+  const positionSummaryList: PositionSummaryContract[] = [];
   const marketIndices: MarketIndicesContract = await getMarketIndices()
-
+console.log("article:",article);
   return { 
     wholelists,
     article,
     marketIndices,
-    title:"LEADERS LIST",
-    titleMessage :"Nvidia Shines, CELH Lags With Leaders Mixed After Fed",
-    settings:{showBanner:false,bannerText:"",showSymbolGroup:true},
+    title:"IBD SECTOR LEADERS",
+    titleMessage :"Growth Stock Kinsale Capital Sees Accelerated Earnings Growth, Moves Above New Buy Point",
+    settings:{showBanner:true,bannerText:"Sector - COMPUTER",showSymbolGroup:false},
     positionSummary: positionSummaryList.map((item: PositionSummaryContract, index: number)=>{
       item.key=index;
       return item;
-    })
+    }),
+    
   }
 }
 
