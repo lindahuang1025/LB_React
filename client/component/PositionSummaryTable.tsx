@@ -48,7 +48,7 @@ const columns: ColumnsType<PositionSummaryContract> = [
 
 const PositionSummaryTable = ({positionSummary}: {positionSummary: PositionSummaryContract[]}) =>{
     return (
-    <div className='mt-[25px]'>
+    <div className='ml-2 w-[881px] overflow-auto'>
       <div className='text-lg leading-[22px] text-[#222] font-normal'>
         POSITIONS SUMMARY
       </div>

@@ -24,7 +24,7 @@ const SymbolDetail = ({wholeItem}: {wholeItem: WholelistsContract}) =>{
         volumePctChgFormat = numberFormat(VolumePercentChange),
         priceClass = priceChgFormat.isPositive ? "text-primary": "text-red",
         volumeClass = volumePctChgFormat.isPositive ? "text-primary": "text-red";
-    return (<div className="border border-[#ddd] shadow-md rounded bg-white border-t-8 border-t-primary px-5 pt-[18px] pb-[15px] mt-[70px]">
+    return (<div className="border border-[#ddd] shadow-md rounded bg-white border-t-8 border-t-primary px-5 pt-[18px] pb-[15px] ml-2">
         <div className="flex justify-between">
             <div>
                 <h3 className="text-[#222] mb-4 leading-tight"> 

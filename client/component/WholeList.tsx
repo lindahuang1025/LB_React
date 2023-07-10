@@ -38,7 +38,7 @@ const WholeList = (props: dataType) =>{
                 </h3>
                 {openGroup && items.map((item, itemIdx)=>{
                     let isActive = (activeGoupItem[0] == groupIdx) && (activeGoupItem[1] == itemIdx);
-                    let activedClass = (isActiveWholeList && isActive) ? "border-t-8 border-t-primary": "";
+                    let activedClass = (isActiveWholeList && isActive) ? "border-t-primary": "";
                     let { Symbol, CompanyName, Price, PriceChange, PricePercentChange, VolumePercentChange } = item;
                     let priceChgFormat = numberFormat(PriceChange),
                         pricePctChgFormat = numberFormat(PricePercentChange),
@@ -46,7 +46,7 @@ const WholeList = (props: dataType) =>{
                         priceClass = priceChgFormat.isPositive ? "text-primary": "text-red",
                         volumeClass = volumePctChgFormat.isPositive ? "text-primary": "text-red";
                     return (<div key={itemIdx} 
-                        className={"border border-[#ddd] mb-4 shadow-md px-5 pb-4 pt-[18px] rounded hover:cursor-pointer bg-white " + activedClass}
+                        className={"border border-t-8 border-[#FFFFFF] mb-4 shadow-md p-4 rounded hover:cursor-pointer bg-white " + activedClass}
                         onClick={()=>{
                             setActiveGoupItem([groupIdx, itemIdx]);
                             onClickWholeList({
@@ -61,7 +61,7 @@ const WholeList = (props: dataType) =>{
                         </div>
                         <div className="flex justify-between pt-[10px]">
                             <div className="flex">
-                                <b className="text-2xl font-bold mr-[15px]">${Price}</b>
+                                <b className="text-base laptop:text-2xl font-bold mr-[15px]">${Price}</b>
                                 <span className={"text-sm font-bold leading-8 flex " + priceClass}>
                                     <Image 
                                         width={14}

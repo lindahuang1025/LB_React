@@ -97,7 +97,7 @@ const App = (props: dataType) => {
                     
                 </div>
                 <div className="basis-2/3"> 
-                    <MainComponent />
+                    {<MainComponent />}
                 </div>
             </div>
         </div>
