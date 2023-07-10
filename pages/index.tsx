@@ -24,7 +24,7 @@ interface dataType {
 
 const Index =(props: dataType) => {
   return <>
-    <Head></Head>
+    {/* <Head></Head> */}
     <ErrorHandler>
       <Header marketIndices={props.marketIndices} />
     </ErrorHandler>

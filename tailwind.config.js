@@ -20,6 +20,7 @@ module.exports = {
       second: '#3a9820',
       drakGreen: '#1b7600',
       lightGreen: '#2a8f00',
+      deepGreen:'#145800',
       white: '#fff',
       black: "black",
       gray: "#000",

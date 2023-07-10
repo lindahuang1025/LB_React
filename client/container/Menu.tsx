@@ -1,5 +1,6 @@
 import React from "react"
 import { Divider } from "antd";
+import Link from "next/link"
 import { SearchOutlined, MenuOutlined, CaretDownOutlined } from '@ant-design/icons';
 
 const mobileOpenableMenuClassNames: string = "w-full text-xs bg-[#444444] overflow-hidden transition-all duration-300 cursor-pointer"
@@ -19,12 +20,12 @@ const Menu: React.FC<{}> = (props: {}) => {
   )
   const [openSubMenuIndex, setOpenSubMenuIndex] = React.useState<number>(null)
 
-	return (
-		<div className="bg-[#3A9820]">
+  return (
+    <div className="bg-[#3A9820]">
       <div className="desktop:w-[1339px] laptop:w-[970px] tablet:w-[760px] text-white mx-auto">
         <div className="flex desktop:hidden items-center justify-between mx-4 tablet:mx-0">
           <MenuOutlined className="text-2xl h-12 leading-[42px] cursor-pointer"
-            onClick={e => {e.stopPropagation();setMenuOpen(i => !i);}}
+            onClick={e => { e.stopPropagation(); setMenuOpen(i => !i); }}
           />
           <div className={`fixed top-[48px] w-[300px] bg-white overflow-hidden shadow transition-all duration-300 ${tlClassName}`}>
             <ul className="text-white" onClick={e => e.stopPropagation()}>
@@ -34,11 +35,11 @@ const Menu: React.FC<{}> = (props: {}) => {
                   <CaretDownOutlined className="text-xs ml-1" />
                 </div>
                 <ul className={`${mobileOpenableMenuClassNames} ${1 === openSubMenuIndex ? "h-[200px]" : "h-0"}`}>
-                  <li className="px-6 text-base py-2">Leaders Near A Buy Point</li>
-                  <li className="px-6 text-base py-2">Leaders</li>
-                  <li className="px-6 text-base py-2">Earnings Options</li>
-                  <li className="px-6 text-base py-2">Short Sales</li>
-                  <li className="px-6 text-base py-2">Leaders Watchlist</li>
+                  <li className="px-6 text-base py-2 cursor-not-allowed font-light text-[#888]">Leaders Near A Buy Point</li>
+                  <li className="px-6 hover:bg-[#EEEEEE] text-base py-2 "><Link href="/" className="no-underline hover:no-underline text-white" >Leaders</Link></li>
+                  <li className="px-6 text-base py-2 cursor-not-allowed font-light text-[#888]">Earnings Options</li>
+                  <li className="px-6 text-base py-2 cursor-not-allowed font-light text-[#888]">Short Sales</li>
+                  <li className="px-6 text-base py-2 cursor-not-allowed font-light text-[#888]">Leaders Watchlist</li>
                 </ul>
                 <Divider className="m-0" />
               </li>
@@ -48,16 +49,16 @@ const Menu: React.FC<{}> = (props: {}) => {
                   <CaretDownOutlined className="text-xs ml-1" />
                 </div>
                 <ul className={`${mobileOpenableMenuClassNames} ${2 === openSubMenuIndex ? "h-[160px]" : "h-0"}`}>
-                  <li className="px-6 text-base py-2">The Big Picture</li>
-                  <li className="px-6 text-base py-2">Stock Market Today</li>
-                  <li className="px-6 text-base py-2">ETF Market Strategy</li>
-                  <li className="px-6 text-base py-2">Market School</li>
+                <li className="px-6 hover:bg-[#EEEEEE] text-base py-2"><Link href="/market/thebigpicture" className="no-underline hover:no-underline text-white" >The Big Picture</Link></li>
+                  <li className="px-6 text-base py-2 cursor-not-allowed font-light text-[#888]">Stock Market Today</li>
+                  <li className="px-6 text-base py-2 cursor-not-allowed font-light text-[#888]">ETF Market Strategy</li>
+                  <li className="px-6 text-base py-2 cursor-not-allowed font-light text-[#888]">Market School</li>
                 </ul>
                 <Divider className="m-0" />
               </li>
               <li>
                 <div className="flex justify-between p-4 bg-black">
-                  <span>IBD Sector Leaders</span>
+                <span> <Link href="/sectorleaders" className="text-white no-underline hover:no-underline" >IBD Sector Leaders</Link></span>
                 </div>
                 <Divider className="m-0" />
               </li>
@@ -67,26 +68,26 @@ const Menu: React.FC<{}> = (props: {}) => {
                   <CaretDownOutlined className="text-xs ml-1" />
                 </div>
                 <ul className={`${mobileOpenableMenuClassNames} ${3 === openSubMenuIndex ? "h-[80px]" : "h-0"}`}>
-                  <li className="px-6 text-base py-2">Top 10</li>
-                  <li className="px-6 text-base py-2">Full List</li>
+                <li className="px-6 hover:bg-[#EEEEEE] text-base py-2 text-[#333]"><Link href="/top10" className="no-underline hover:no-underline text-whiteblock tablet:hidden text-lg" >Top 10</Link></li>
+                  <li className="px-6 text-base py-2 cursor-not-allowed font-light text-[#888]">Full List</li>
                 </ul>
                 <Divider className="m-0" />
               </li>
               <li>
                 <div className="flex justify-between p-4 bg-black">
-                  <span>Stock Spotlight</span>
+                 <Link href="/stockspotlight" className="text-white no-underline hover:no-underline" >Stock Spotlight</Link>
                 </div>
                 <Divider className="m-0" />
               </li>
               <li>
                 <div className="flex justify-between p-4 bg-black">
-                  <span>Stocks Added/Removed </span>
+                <Link href="/recentaction" className="text-white no-underline hover:no-underline" >Stocks Added/Removed</Link>
                 </div>
                 <Divider className="m-0" />
               </li>
               <li>
                 <div className="flex justify-between p-4 bg-black">
-                  <span>My Stock Lists</span>
+                <Link href="/mystocklists" className="text-white no-underline hover:no-underline" >My Stock Lists</Link>
                 </div>
                 <Divider className="m-0" />
               </li>
@@ -114,42 +115,42 @@ const Menu: React.FC<{}> = (props: {}) => {
             <span>Leaders</span>
             <CaretDownOutlined className="text-xs ml-1" />
             <ul className="hidden absolute w-[280px] group-hover:block z-10 top-[48px] bg-white border border-[#DDDDDD] rounded left-0 py-2 shadow-xl">
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">Leaders Near A Buy Point</li>
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">Leaders</li>
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">Earnings Options</li>
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">Short Sales</li>
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">Leaders Watchlist</li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">Leaders Near A Buy Point</li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 text-[#333]"><Link href="/" className="no-underline hover:no-underline" >Leaders</Link></li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">Earnings Options</li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">Short Sales</li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">Leaders Watchlist</li>
             </ul>
           </li>
           <li className={`${desktopMenuClassNames} relative group`}>
             <span>Market</span>
             <CaretDownOutlined className="text-xs ml-1" />
             <ul className="hidden absolute w-[280px] group-hover:block z-10 top-[48px] bg-white border border-[#DDDDDD] rounded left-0 py-2 shadow-xl">
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">The Big Picture</li>
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">Stock Market Today</li>
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">ETF Market Strategy</li>
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">Market School</li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1"><Link href="/market/thebigpicture" className="no-underline hover:no-underline" >The Big Picture</Link></li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">Stock Market Today</li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">ETF Market Strategy</li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">Market School</li>
             </ul>
           </li>
           <li className={desktopMenuClassNames}>
-            <span>IBD Sector Leaders</span>
+          <span> <Link href="/sectorleaders" className="text-white no-underline hover:no-underline" >IBD Sector Leaders</Link></span>
           </li>
           <li className={`${desktopMenuClassNames} relative group`}>
             <span>IBD 50</span>
             <CaretDownOutlined className="text-xs ml-1" />
             <ul className="hidden absolute w-[280px] group-hover:block z-10 top-[48px] bg-white border border-[#DDDDDD] rounded left-0 py-2 shadow-xl">
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">Top 10</li>
-              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1">Full List</li>
+            <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 text-[#333]"><Link href="/top10" className="no-underline hover:no-underline" >Top 10</Link></li>
+              <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">Full List</li>
             </ul>
           </li>
           <li className={desktopMenuClassNames}>
-            <span>Stock Spotlight</span>
+            <Link href="/stockspotlight" className="text-white no-underline hover:no-underline" >Stock Spotlight</Link>
           </li>
           <li className={desktopMenuClassNames}>
-            <span>Stocks Added/Removed </span>
+            <Link href="/recentaction" className="text-white no-underline hover:no-underline" >Stocks Added/Removed</Link>
           </li>
           <li className={desktopMenuClassNames}>
-            <span>My Stock Lists</span>
+            <Link href="/mystocklists" className="text-white no-underline hover:no-underline" >My Stock Lists</Link>
           </li>
           <li className={desktopMenuClassNames}>
             <span>My Alerts</span>
@@ -160,7 +161,7 @@ const Menu: React.FC<{}> = (props: {}) => {
         </ul>
       </div>
     </div>
-   )
+  )
 }
 
 export default Menu
