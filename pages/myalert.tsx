@@ -127,7 +127,7 @@ const Index = (props: dataType) => {
                         <div className="text-[14px] text-white text-center px-5 py-2 h-[12px] grow bg-[#31a700]">
                             Price
                         </div>
-                        <div className="text-[#222222] text-[14px] bg-white h-[20px]  text-center px-5 py-2 grow bg-[#31a700] border-[1px] border-[#67c500]  px-[25px]">
+                        <div className="text-[#222222] text-[14px] bg-white h-[20px]  text-center px-5 py-2 grow bg-[#31a700] border-[1px] border-[#67c500] py-[40px] px-[25px]">
                         </div>
                     </div>
                 </div>
