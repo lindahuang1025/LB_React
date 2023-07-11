@@ -31,7 +31,7 @@ const SymbolDetail = ({ wholeItem,settings }: { wholeItem: WholelistsContract,se
             <div className="bg-white h-[30px] w-[30px] rounded-[50%] text-center text-[#31a700] px-[9px] py-[1px] font-black inline ml-[15px] mr-[10px]">1</div>
             <span className="text-[22px]">{settings.bannerText}</span>
         </div>}
-        <div className={"shadow-md rounded bg-white  px-5 pt-[18px] pb-[15px] ml-2" +headerBorderClass}>
+        <div className={"shadow-md rounded bg-white  px-5 pt-[18px] pb-[15px] ml-2 " +headerBorderClass}>
             <div className="flex justify-between">
                 <div>
                     <h3 className="text-[#222] mb-4 leading-tight">

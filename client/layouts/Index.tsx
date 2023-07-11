@@ -83,8 +83,8 @@ const IndexLayout = (props: dataType) => {
       <div className="flex ">
         <div className="w-full desktop:w-[450px] laptop:w-[360px] tablet:w-[300px] desktop:min-w-[450px] laptop:min-w-[360px] tablet:min-w-[300px] px-4 tablet:px-0">
           <div className="flex text-white cursor-pointer" onClick={() => setOpenNav(selectLeader.article)}>
-            <div className="flex-1 bg-[#1A7601] p-4 text-white text-lg">{titleMessage}</div>
-            <div className={"text-4xl flex items-center justify-center w-[45px] bg-primary"}>
+            <div className={`flex-1 p-4 text-white text-lg ${articleActiveClass}`}>{titleMessage}</div>
+            <div className={`text-4xl flex items-center justify-center w-[45px] ${articleUnActiveClass}`}>
               <EllipsisOutlined />
             </div>
           </div>
