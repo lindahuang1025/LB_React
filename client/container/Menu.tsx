@@ -68,7 +68,7 @@ const Menu: React.FC<{}> = (props: {}) => {
                   <CaretDownOutlined className="text-xs ml-1" />
                 </div>
                 <ul className={`${mobileOpenableMenuClassNames} ${3 === openSubMenuIndex ? "h-[80px]" : "h-0"}`}>
-                  <li className="px-6 hover:bg-[#EEEEEE] text-base py-2 text-[#333]"><Link href="/top10" className="no-underline hover:no-underline text-whiteblock tablet:hidden text-lg" >Top 10</Link></li>
+                  <li className="px-6 hover:bg-[#EEEEEE] text-base py-2 text-[#333]"><Link href="/top10" className="no-underline hover:no-underline text-white block tablet:hidden text-lg" >Top 10</Link></li>
                   <li className="px-6 text-base py-2 cursor-not-allowed font-light text-[#888]">Full List</li>
                 </ul>
                 <Divider className="m-0" />
