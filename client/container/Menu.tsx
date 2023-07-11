@@ -27,7 +27,7 @@ const Menu: React.FC<{}> = (props: {}) => {
           <MenuOutlined className="text-2xl h-12 leading-[42px] cursor-pointer"
             onClick={e => { e.stopPropagation(); setMenuOpen(i => !i); }}
           />
-          <div className={`fixed top-[48px] w-[300px] bg-white overflow-hidden shadow transition-all duration-300 ${tlClassName}`}>
+          <div className={`fixed top-[48px] w-[300px] bg-white overflow-hidden shadow transition-all duration-300 ${tlClassName} z-50`}>
             <ul className="text-white" onClick={e => e.stopPropagation()}>
               <li onClick={e => setOpenSubMenuIndex(i => i === 1 ? null : 1)}>
                 <div className="flex justify-between p-4 bg-black">
