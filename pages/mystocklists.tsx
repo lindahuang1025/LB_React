@@ -4,11 +4,11 @@ import { getMarketIndices } from "@/server/repositories/market-indices-resposito
 import { getArticle, getPositionSummary, getWholelists } from "@/server/repositories/leaders-respository";
 import { MarketIndicesContract, ArticleContract, WholelistsContract, PositionSummaryContract } from "@/contracts"
 import { Settings } from "@/contracts/marketContract";
-
+import Image from 'next/image';
 import Head from "next/head";
 import Header from "@/client/container/Header";
 import Footer from "@/client/container/Footer";
-
+import { LeadersImage, GreenArrowImage, RedArrowImage } from "@/client/config/imgConfig";
 import ErrorHandler from "@/client/component/ErrorHandler";
 import { ArrowDownOutlined, ArrowUpOutlined, CaretDownOutlined, DownOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Dropdown, MenuProps, Space } from "antd";
@@ -47,12 +47,46 @@ const menuProps = {
     onClick: () => { },
 };
 
+const PriceChange = ({ symbol }: { symbol: WholelistsContract }) => {
+    const value = symbol.PriceChange > 0 ? symbol.PriceChange : Math.abs(symbol.PriceChange);
+    return <Fragment>
+        <Image
+            className="inline mr-2 mb-[5px]"
+            width={16}
+            height={16}
+            src={symbol.PriceChange > 0 ? GreenArrowImage.src : RedArrowImage.src}
+            alt={symbol.PriceChange > 0 ? GreenArrowImage.alt : RedArrowImage.alt} />
+        <span className={(symbol.PriceChange > 0 ? "text-[#2a8f00]" : "text-red") + " text-[20px]"}>{value}</span>
+    </Fragment>
+}
+
+const PricePersentChange = ({ symbol }: { symbol: WholelistsContract }) => {
+    const value = symbol.PricePercentChange > 0 ? (symbol.PricePercentChange).toFixed(2) : Math.abs(symbol.PricePercentChange).toFixed(2);
+    return <Fragment>
+        <Image
+            className="inline mr-2 mb-[5px]"
+            width={16}
+            height={16}
+            src={symbol.PricePercentChange > 0 ? GreenArrowImage.src : RedArrowImage.src}
+            alt={symbol.PricePercentChange > 0 ? GreenArrowImage.alt : RedArrowImage.alt} />
+        <span className={(symbol.PricePercentChange > 0 ? "text-[#2a8f00]" : "text-red") + " text-[20px]"}>{value}%</span>
+    </Fragment>
+}
+
+const VolumePersentChange = ({ symbol }: { symbol: WholelistsContract }) => {
+    const value = symbol.VolumePercentChange > 0 ? (symbol.VolumePercentChange).toFixed(2) : Math.abs(symbol.VolumePercentChange).toFixed(2);
+    return <Fragment>
+        <Image
+            className="inline mr-2 mb-[5px]"
+            width={16}
+            height={16}
+            src={symbol.VolumePercentChange > 0 ? GreenArrowImage.src : RedArrowImage.src}
+            alt={symbol.VolumePercentChange > 0 ? GreenArrowImage.alt : RedArrowImage.alt} />
+        <span className={(symbol.VolumePercentChange > 0 ? "text-[#2a8f00]" : "text-red") + " text-[20px]"}>{value} %</span>
+    </Fragment>
+}
+
 const SymbolItem = ({ _symbol }: { _symbol: WholelistsContract }) => {
-
-    const price_changed = _symbol.PriceChange > 0 ? <Fragment><ArrowUpOutlined className="mb-2 text-[#2a8f00]" /><span className="ml-1 text-[#2a8f00]">{_symbol.PriceChange}</span></Fragment> : <Fragment><ArrowDownOutlined className="text-red" /><span className="text-red">{Math.abs(_symbol.PriceChange)}</span></Fragment>
-    const price_changed_percent = _symbol.PricePercentChange > 0 ? <Fragment><ArrowUpOutlined className="mb-2 text-[#2a8f00]" /><span className="ml-1 text-[#2a8f00]">{(_symbol.PricePercentChange).toFixed(2) + "%"}</span></Fragment> : <Fragment><ArrowDownOutlined className="text-red" /><span className="text-red">{Math.abs(_symbol.PricePercentChange).toFixed(2) + "%"}</span></Fragment>
-    const volume_changed_percent = _symbol.VolumePercentChange > 0 ? <Fragment><ArrowUpOutlined className="mb-2 text-[#2a8f00]" /><span className="ml-1 text-[#2a8f00]">{(_symbol.VolumePercentChange).toFixed(2) + "%"}</span></Fragment> : <Fragment><ArrowDownOutlined className="text-red" /><span className="text-red">{Math.abs(_symbol.VolumePercentChange).toFixed(2) + "%"}</span></Fragment>
-
     let volume = "";
     if (_symbol.Volume > 1000000) {
         volume = (Math.floor((_symbol.Volume / 1000000) * 10) / 10) + "M";
@@ -61,38 +95,33 @@ const SymbolItem = ({ _symbol }: { _symbol: WholelistsContract }) => {
         volume = (Math.floor((_symbol.Volume / 1000) * 10) / 10) + "K";
     }
 
-    return <tr className="text-left bg-white text-[#333] text-[17px] p-4 h-[50px]">
-        <td className="p-4 font-black">{_symbol.Symbol}</td>
-        <td className="p-4 font-light">{_symbol.CompanyName}</td>
-        <td className="p-4">{"$" + _symbol.Price}</td>
-        <td className="p-4">{price_changed}</td>
-        <td className="p-4">{price_changed_percent}</td>
-        <td className="p-4">{volume}</td>
-        <td className="p-4">{volume_changed_percent}</td>
+    return <tr className="text-left bg-white text-[#333] p-4 h-[50px] border border-[#ddd] border-t-1">
+        <td className="p-4 font-black text-center text-lg">{_symbol.Symbol}</td>
+        <td className="p-4 font-light text-center text-lg">{_symbol.CompanyName}</td>
+        <td className="p-4 text-center text-[20px]">{"$" + _symbol.Price}</td>
+        <td className="p-4 text-center"><PriceChange symbol={_symbol} /></td>
+        <td className="p-4 text-center"><PricePersentChange symbol={_symbol} /></td>
+        <td className="p-4 text-center text-[18px]">{volume}</td>
+        <td className="p-4 text-center"><VolumePersentChange symbol={_symbol} /></td>
     </tr>
 }
 
 const SymbolMobileItem = ({ _symbol }: { _symbol: WholelistsContract }) => {
-
-    const price_changed = _symbol.PriceChange > 0 ? <Fragment><ArrowUpOutlined className="mb-2 text-[#2a8f00]" /><span className="ml-1 text-[#2a8f00]">{_symbol.PriceChange}</span></Fragment> : <Fragment><ArrowDownOutlined className="text-red" /><span className="text-red">{Math.abs(_symbol.PriceChange)}</span></Fragment>
-    const price_changed_percent = _symbol.PricePercentChange > 0 ? <Fragment><ArrowUpOutlined className="mb-2 text-[#2a8f00]" /><span className="ml-1 text-[#2a8f00]">{(_symbol.PricePercentChange).toFixed(2) + "%"}</span></Fragment> : <Fragment><ArrowDownOutlined className="text-red" /><span className="text-red">{Math.abs(_symbol.PricePercentChange).toFixed(2) + "%"}</span></Fragment>
-    const volume_changed_percent = _symbol.VolumePercentChange > 0 ? <Fragment><ArrowUpOutlined className="mb-2 text-[#2a8f00]" /><span className="ml-1 text-[#2a8f00]">{(_symbol.VolumePercentChange).toFixed(2) + "%"}</span></Fragment> : <Fragment><ArrowDownOutlined className="text-red" /><span className="text-red">{Math.abs(_symbol.VolumePercentChange).toFixed(2) + "%"}</span></Fragment>
-
-    let volume = "0";
+    let volume = "";
     if (_symbol.Volume > 1000000) {
         volume = (Math.floor((_symbol.Volume / 1000000) * 10) / 10) + "M";
     }
     else if (_symbol.Volume > 1000) {
         volume = (Math.floor((_symbol.Volume / 1000) * 10) / 10) + "K";
     }
-    return <div className="text-left bg-white text-[#333] text-[17px] p-4 h-[50px] mt-1 mb-1">
+    return <div className="text-left bg-white text-[#333] text-lg p-4 h-[50px] mt-1 mb-1 shadow-xl">
         <div className="mb-4"><span>Symbol :</span> <span className="p-4 font-black">{_symbol.Symbol}</span></div>
         <div className="mb-4"><span>CompanyName :</span><span className="p-4 font-light">{_symbol.CompanyName}</span></div>
-        <div className="mb-4"><span>Price</span><span className="p-4">{"$" + _symbol.Price}</span></div>
-        <div className="mb-4"><span>PriceChg. :</span>{price_changed}</div>
-        <div className="mb-4"><span>Price%Chg. :</span>{price_changed_percent}</div>
+        <div className="mb-4"><span>Price :</span><span className="p-4">{"$" + _symbol.Price}</span></div>
+        <div className="mb-4"><span>PriceChg. :</span><span className="p-4"><PriceChange symbol={_symbol} /></span></div>
+        <div className="mb-4"><span>Price%Chg. :</span><span className="p-4"><PricePersentChange symbol={_symbol} /></span></div>
         <div className="mb-4"><span>Volume :</span>{volume}</div>
-        <div className="mb-4"><span>Volume%Chg. :</span>{volume_changed_percent}</div>
+        <div className="mb-4"><span>Volume%Chg. :</span><span className="p-4"><VolumePersentChange symbol={_symbol} /></span></div>
     </div>
 }
 
