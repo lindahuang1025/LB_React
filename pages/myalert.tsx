@@ -103,31 +103,33 @@ const Index = (props: dataType) => {
         <ErrorHandler>
             <Header marketIndices={props.marketIndices} />
         </ErrorHandler>
-        <div className="container">
-            <div className="mt-2">
+        <div className="container py-5">
+            <div className="mt-1">
                 <Button className="ml-4 text-base">Create</Button>
                 <Button className="ml-4 text-base">Active</Button>
                 <Button className="ml-4 text-base">Triggred</Button>
             </div>
-            <div className="mt-2">
+            <div className="mt-1 py-3">
                 <Button className="ml-4 text-base">Symbol</Button>
                 <Button className="ml-4 text-base">Lists</Button>
             </div>
 
-            <div className="border bg-white p-5 border-[#ddd] border-t-8 border-t-primary">
+            <div className="border bg-white p-5 border-[#ddd] border-t-8 border-t-primary mt-1">
                 <div className="flex flex-col tablet:flex-row min-w-full ">
                     <div className="w-full tablet:w-1/2 tablet:ml-auto">
                         <div className="text-[14px] text-white text-center px-5 py-2 h-[12px] grow bg-[#31a700]">
                             Symbol
                         </div>
-                        <div className="text-[#222222] text-[30px] bg-white h-[20px]  text-center px-5 py-2 grow bg-[#31a700] border-[1px] border-[#67c500] py-[40px] px-[25px]">
+                        <div className="text-[#d9d9d9] text-[14px] bg-white h-[20px] text-center px-5 py-2 grow border-[1px] border-[#67c500] py-[40px] px-[25px]">
+                            No data
                         </div>
                     </div>
                     <div className="w-full tablet:w-1/2 tablet:mr-auto tablet:ml-[45px]">
                         <div className="text-[14px] text-white text-center px-5 py-2 h-[12px] grow bg-[#31a700]">
                             Price
                         </div>
-                        <div className="text-[#222222] text-[14px] bg-white h-[20px]  text-center px-5 py-2 grow bg-[#31a700] border-[1px] border-[#67c500] py-[40px] px-[25px]">
+                        <div className="text-[#d9d9d9] text-[14px] bg-white h-[20px]  text-center px-5 py-2 grow border-[1px] border-[#67c500] py-[40px] px-[25px]">
+                            No data
                         </div>
                     </div>
                 </div>
@@ -173,7 +175,7 @@ const Index = (props: dataType) => {
                 <div className="flex flex-col tablet:flex-row min-w-full ">
                     <div className="w-full tablet:w-1/2 tablet:ml-auto"></div>
                     <div className="w-full tablet:w-1/2 tablet:mr-auto tablet:ml-[45px]">
-                    <Button className="ml-4 text-base w-full">Save</Button>
+                        <Button className="ml-4 text-base w-full">Save</Button>
                     </div>
                 </div>
             </div>
