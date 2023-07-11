@@ -105,13 +105,13 @@ const Index = (props: dataType) => {
         </ErrorHandler>
         <div className="container py-5">
             <div className="mt-1">
-                <Button className="ml-4 text-base">Create</Button>
-                <Button className="ml-4 text-base">Active</Button>
-                <Button className="ml-4 text-base">Triggred</Button>
+                <Button className="ml-1 text-base">Create</Button>
+                <Button className="ml-1 text-base">Active</Button>
+                <Button className="ml-1 text-base">Triggred</Button>
             </div>
-            <div className="mt-1 py-3">
-                <Button className="ml-4 text-base">Symbol</Button>
-                <Button className="ml-4 text-base">Lists</Button>
+            <div className="py-3">
+                <Button className="ml-1 text-base">Symbol</Button>
+                <Button className="ml-1 text-base">Lists</Button>
             </div>
 
             <div className="border bg-white p-5 border-[#ddd] border-t-8 border-t-primary mt-1">
