@@ -6,6 +6,7 @@ import Index from "@/client/routes/Index"
 import MyAlert from "@/client/routes/MyAlert"
 import MyStockLists from "@/client/routes/MyStockLists"
 import Recentaction from "@/client/routes/Recentaction"
+import TheBigPicture from "../component/TheBigPicture"
 
 const Router: React.FC<RouterProps> = (props: RouterProps) => {
 
@@ -64,14 +65,7 @@ const Router: React.FC<RouterProps> = (props: RouterProps) => {
       )
     case Routes.TheBigPicture:
       return (
-        <Index
-          wholelists={props.wholelists}
-          article={props.article}
-          positionSummary={props.positionSummary}
-          title={props.title}
-          titleMessage={props.titleMessage}
-          settings={props.thebigpictureSetting}
-        />
+      <TheBigPicture   {...props} />
       )
     default:
       return (

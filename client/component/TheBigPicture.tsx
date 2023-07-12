@@ -8,7 +8,7 @@ interface dataType {
   MarketType: MarketType
 };
 
-const Market = (props: dataType) => {
+const TheBigPicture = (props: dataType) => {
   const { article } = props;
 
   return (
@@ -62,4 +62,4 @@ const Market = (props: dataType) => {
   );
 }
 
-export default Market;
+export default TheBigPicture;
