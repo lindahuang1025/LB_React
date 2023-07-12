@@ -1,19 +1,6 @@
-import React, { Fragment } from "react";
-import { NextPageContext } from 'next';
-import { getMarketIndices } from "@/server/repositories/market-indices-respository";
-import { getArticle, getPositionSummary, getWholelists } from "@/server/repositories/leaders-respository";
-import { MarketIndicesContract, ArticleContract, WholelistsContract, PositionSummaryContract } from "@/contracts"
-import { Settings } from "@/contracts/marketContract";
-
-import Head from "next/head";
-import Header from "@/client/container/Header";
-import Footer from "@/client/container/Footer";
-
-import ErrorHandler from "@/client/component/ErrorHandler";
-import { ArrowDownOutlined, ArrowUpOutlined, CaretDownOutlined, DownOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Dropdown, Input, MenuProps, Space } from "antd";
+import React from "react";
+import { Button, Input } from "antd";
 import { getStockList } from "@/server/repositories/market-responsitory";
-
 
 const MyAlert = (props: dataType) => {
   return <>
@@ -28,30 +15,32 @@ const MyAlert = (props: dataType) => {
         <Button className="ml-4 text-base">Lists</Button>
       </div>
 
-      <div className="border bg-white p-5 border-[#ddd] border-t-8 border-t-primary">
+      <div className="border bg-white p-5 border-[#ddd] border-t-8 border-t-primary m-4">
         <div className="flex flex-col tablet:flex-row min-w-full ">
           <div className="w-full tablet:w-1/2 tablet:ml-auto">
-            <div className="text-[14px] text-white text-center px-5 py-2 h-[12px] grow bg-[#31a700]">
+            <div className="text-[14px] text-white text-center px-5 py-2 h-[30px] grow bg-[#31a700]">
               Symbol
             </div>
-            <div className="text-[#222222] text-[30px] bg-white h-[20px]  text-center px-5 py-2 grow bg-[#31a700] border-[1px] border-[#67c500] py-[40px] px-[25px]">
+            <div className="text-[#222222] text-[14px] bg-white h-[20px]  text-center px-5 py-2 grow bg-[#31a700] border-[1px] border-[#67c500] py-[40px] px-[25px]">
+              No data
             </div>
           </div>
           <div className="w-full tablet:w-1/2 tablet:mr-auto tablet:ml-[45px]">
-            <div className="text-[14px] text-white text-center px-5 py-2 h-[12px] grow bg-[#31a700]">
+            <div className="text-[14px] text-white text-center px-5 py-2 h-[30px] grow bg-[#31a700]">
               Price
             </div>
             <div className="text-[#222222] text-[14px] bg-white h-[20px]  text-center px-5 py-2 grow bg-[#31a700] border-[1px] border-[#67c500] py-[40px] px-[25px]">
+              No data
             </div>
           </div>
         </div>
         <p className="mb-1">Moving Averages:</p>
         <div className="flex flex-col tablet:flex-row min-w-full ">
           <div className="w-full tablet:w-1/2 tablet:ml-auto">
-            <div className="text-[14px] text-white text-center px-5 py-2 h-[12px] grow bg-[#31a700]">
+            <div className="text-[14px] text-white text-center px-5 py-2 h-[30px] grow bg-[#31a700]">
               Daily Chart
             </div>
-            <div className="text-[#222222] text-[14px] bg-white h-[20px]  text-left  grow bg-[#31a700] border-[1px] border-[#67c500]">
+            <div className="text-[#222222] text-[14px] bg-white h-[155px]  text-left  grow bg-[#31a700] border-[1px] border-[#67c500]">
               <div className="border bg-white p-2 border-[#ddd] border-b-1 border-t-primary">10-day</div>
               <div className="border bg-white p-2 border-[#ddd] border-b-1 border-t-primary">21-day EMA</div>
               <div className="border bg-white p-2 border-[#ddd] border-b-1 border-t-primary">50-day</div>
@@ -59,10 +48,10 @@ const MyAlert = (props: dataType) => {
             </div>
           </div>
           <div className="w-full tablet:w-1/2 tablet:mr-auto tablet:ml-[45px]">
-            <div className="text-[14px] text-white text-center px-5 py-2 h-[12px] grow bg-[#31a700]">
+            <div className="text-[14px] text-white text-center px-5 py-2 h-[30px] grow bg-[#31a700]">
               Weekly Chart
             </div>
-            <div className="text-[#222222] text-[14px] bg-white h-[20px]  text-left  grow bg-[#31a700] border-[1px] border-[#67c500]">
+            <div className="text-[#222222] text-[14px] bg-white h-[78px]  text-left  grow bg-[#31a700] border-[1px] border-[#67c500]">
               <div className="border bg-white p-2 border-[#ddd] border-b-1 border-t-primary">10-Week</div>
               <div className="border bg-white p-2 border-[#ddd] border-b-1 border-t-primary">40-Week</div>
             </div>
@@ -87,7 +76,7 @@ const MyAlert = (props: dataType) => {
         <div className="flex flex-col tablet:flex-row min-w-full ">
           <div className="w-full tablet:w-1/2 tablet:ml-auto"></div>
           <div className="w-full tablet:w-1/2 tablet:mr-auto tablet:ml-[45px]">
-          <Button className="ml-4 text-base w-full">Save</Button>
+            <Button className="ml-4 text-base w-full">Save</Button>
           </div>
         </div>
       </div>
