@@ -7,7 +7,7 @@ import { Settings } from "@/contracts/marketContract";
 import Image from 'next/image';
 import addImag from "@/public/img/Add.png";
 import chartImag from "@/public/img/Chart.png";
-import articleImag from "@/public/img/Alerts.png";
+import articleImag from "@/public/img/ArticleArchives.png";
 import alertImag from "@/public/img/Alerts.png";
 import deleteImag from "@/public/img/trash-default.svg";
 import exportImag from "@/public/img/export.svg";

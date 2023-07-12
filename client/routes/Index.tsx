@@ -19,7 +19,8 @@ interface dataType {
   positionSummary: PositionSummaryContract[],
   title: string,
   titleMessage: string,
-  settings: Settings
+  settings: Settings,
+  type: string
 };
 
 interface CustomEvent {
@@ -28,7 +29,7 @@ interface CustomEvent {
 }
 
 const Index = (props: dataType) => {
-  const { wholelists, article, positionSummary, settings, titleMessage, title } = props;
+  const { wholelists, article, positionSummary, settings, titleMessage, title, type } = props;
   let [wholeGoups, setWholeGoups] = useState<WholelistsGroupContract[]>([]);
   let [openNav, setOpenNav] = useState<string>(selectLeader.wholeList);
   let [wholeItem, setWholItem] = useState<WholelistsContract>(Object);
@@ -54,18 +55,6 @@ const Index = (props: dataType) => {
     }
   }, [wholelists]);
 
-  const MainComponent = () => {
-    switch (openNav) {
-      case selectLeader.article:
-        return <Article article={article} />;
-      case selectLeader.positionSummary:
-        return <PositionSummaryTable positionSummary={positionSummary} />;
-      case selectLeader.wholeList:
-        return <SymbolDetail wholeItem={wholeItem} settings={settings} />;
-      default:
-        return <SymbolDetail wholeItem={wholeItem} settings={settings} />;
-    }
-  }
 
   const onClickWholeList = (props: CustomEvent) => {
     const { groupIdx, itemIdx } = props;
@@ -100,11 +89,9 @@ const Index = (props: dataType) => {
           />
         </div>
         <div className="hidden tablet:flex flex-1 overflow-hidden">
-          <div>
             {openNav === selectLeader.article && <Article article={article} />}
             {openNav === selectLeader.positionSummary && <PositionSummaryTable positionSummary={positionSummary} />}
-            {openNav === selectLeader.wholeList && <SymbolDetail wholeItem={wholeItem} settings={settings} />}
-          </div>
+            {openNav === selectLeader.wholeList && <SymbolDetail wholeItem={wholeItem} settings={settings} type={type} />}
         </div>
       </div>
     </div>

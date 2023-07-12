@@ -47,6 +47,7 @@ const Router: React.FC<RouterProps> = (props: RouterProps) => {
           title={props.spotlightTitle}
           titleMessage={props.spotlightTitleMessage}
           settings={props.spotlightSetting}
+          type ={"spotlight"}
         />
       )
     case Routes.Top10:
@@ -58,6 +59,7 @@ const Router: React.FC<RouterProps> = (props: RouterProps) => {
           title={props.top10Title}
           titleMessage={props.top10TitleMessage}
           settings={props.top10Setting}
+          type ={"top10"}
         />
       )
     case Routes.TheBigPicture:

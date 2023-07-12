@@ -53,9 +53,9 @@ Index.getInitialProps = async function(): Promise<IndexProps> {
     spotlightTitle: "STOCK SPOTLIGHT",
     spotlightTitleMessage: "Building Stock Crafts Framework Of Bullish Chart Pattern",
     spotlightSetting: { showBanner: true, bannerText: "STOCK SPOTLIGHT", showSymbolGroup: false },
-    top10Title: "STOCK SPOTLIGHT",
-    top10TitleMessage: "Building Stock Crafts Framework Of Bullish Chart Pattern",
-    top10Setting: { showBanner:true, bannerText: "STOCK SPOTLIGHT", showSymbolGroup: false },
+    top10Title: "IBD 50 Top 10",
+    top10TitleMessage: "4 IBD 50 Stocks At Risk; One Already Got Kicked Off The List",
+    top10Setting: { showBanner:true, bannerText: "IBD 50 TOP 10", showSymbolGroup: false },
     thebigpictureSetting: { showBanner:false, bannerText:"", showSymbolGroup: false},
   }
 }
