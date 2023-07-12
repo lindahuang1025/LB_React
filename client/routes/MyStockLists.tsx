@@ -5,9 +5,11 @@ import { getArticle, getPositionSummary, getWholelists } from "@/server/reposito
 import { MarketIndicesContract, ArticleContract, WholelistsContract, PositionSummaryContract } from "@/contracts"
 import { Settings } from "@/contracts/marketContract";
 import Image from 'next/image';
-import Head from "next/head";
-import Header from "@/client/container/Header";
-import Footer from "@/client/container/Footer";
+import addImag from "@/public/img/Add.png";
+import chartImag from "@/public/img/Chart.png";
+import articleImag from "@/public/img/Alerts.png";
+import alertImag from "@/public/img/Alerts.png";
+import deleteImag from "@/public/img/trash-default.svg";
 import { LeadersImage, GreenArrowImage, RedArrowImage } from "@/client/config/imgConfig";
 import ErrorHandler from "@/client/component/ErrorHandler";
 import { ArrowDownOutlined, ArrowUpOutlined, CaretDownOutlined, DownOutlined, UserOutlined } from "@ant-design/icons";
@@ -103,6 +105,15 @@ const SymbolItem = ({ _symbol }: { _symbol: WholelistsContract }) => {
     <td className="p-4 text-center"><PricePersentChange symbol={_symbol} /></td>
     <td className="p-4 text-center text-[18px]">{volume}</td>
     <td className="p-4 text-center"><VolumePersentChange symbol={_symbol} /></td>
+    <td>
+      <div className="flex flex-row">
+      <Image height="30" width="30" alt="" src={chartImag} />
+      <Image height="30" width="30" alt="" src={addImag} />
+      <Image height="30" width="30" alt="" src={articleImag} />
+      <Image height="30" width="30" alt="" src={alertImag} />
+      <Image height="30" width="30" alt="" src={deleteImag} />
+      </div>
+    </td>
   </tr>
 }
 
@@ -126,16 +137,15 @@ const SymbolMobileItem = ({ _symbol }: { _symbol: WholelistsContract }) => {
 }
 
 const MyStockLists = (props: dataType) => {
-
   const { wholelists } = props;
   return <>
     <div className="w-full bg-drakGreen h-[60px] ">
-      <div className="desktop:w-[1339px] laptop:w-[970px] tablet:w-[760px] mx-auto my-2 py-4">
+      <div className="desktop:w-[1339px] laptop:w-[970px] tablet:w-[760px] mx-auto my-2">
         <div className="desktop:w-[1339px] laptop:w-[970px] tablet:w-[760px] text-white mx-auto">
           <ul className="font-lato hidden desktop:flex">
-            <span className="mt-[15px]">My Stock List</span>
+            <span className="ml-[15px] mt-4">My Stock List</span>
             <li className={`h-12 leading-[48px] px-4 text-white text-xl font-light hover:bg-[#67C501] hover:text-[#484848] cursor-pointer flex items-center relative group`}>
-              <span className="w-[40px] pl-[20px] mx-[50px]"><DownOutlined className="text-xs ml-1 text-bold" /></span>
+              <span className="w-[40px] mb-8 mt-7"><DownOutlined className="text-xs ml-1 text-bold" /></span>
               <ul className="hidden absolute w-[280px] group-hover:block z-10 top-[48px] bg-white border border-[#DDDDDD] rounded left-0 py-2 shadow-xl">
                 <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">My Stock List</li>
                 <li className="px-3 hover:bg-[#EEEEEE] text-xl py-1 cursor-not-allowed font-light text-[#888]">My Stock List 2</li>
@@ -147,16 +157,16 @@ const MyStockLists = (props: dataType) => {
         </div>
       </div>
     </div>
-    <div className="container">
+    <div className="container mt-3">
       <Dropdown menu={menuProps} className="mr-3">
-        <Button>
+        <Button size={'large'}>
           <Space className="text-base">
             Price&Volume
             <DownOutlined />
           </Space>
         </Button>
       </Dropdown>
-      <Button className="ml-4 text-base">Edit Stock List</Button>
+      <Button size={'large'} className="ml-4 text-base">Edit Stock List</Button>
       <div className="tablet:hidden">
         {
           wholelists.map((item, i) => {
@@ -175,6 +185,7 @@ const MyStockLists = (props: dataType) => {
               <th className="p-4">Price%Chg.</th>
               <th className="p-4">Volume</th>
               <th className="p-4">Volume%Chg.</th>
+              <th></th>
             </tr>
           </thead>
           <tbody className="bg-white dark:bg-slate-800">
