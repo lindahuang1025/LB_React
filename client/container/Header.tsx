@@ -28,7 +28,7 @@ const Header: React.FC<dataType> = (props: dataType) => {
   const [searchInputFocused, setSearchInputFocused] = React.useState<boolean>(false)
   const handleSearchChange = async (searchText: string) => {
     setSearchText(searchText)
-    return onSearchSymbols(searchText)
+    onSearchSymbols(searchText)
   }
 
   const [searchedSymbols, setSearchedSymbols] = React.useState<SearchedSymbolContract[]>([])
@@ -37,7 +37,7 @@ const Header: React.FC<dataType> = (props: dataType) => {
     setSearchSymbolsStatus(ApiRequestState.PENDING)
     try {
       const response: SymbolSearchResponse = await searchSymbols(searchText)
-      setSearchedSymbols(response.data as SearchedSymbolContract[])
+      setSearchedSymbols(response.data)
     } catch (error) {
       setSearchSymbolsStatus(ApiRequestState.ERROR)
     } finally {

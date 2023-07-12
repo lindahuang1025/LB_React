@@ -27,7 +27,7 @@ interface CustomEvent {
   itemIdx: number
 }
 
-const IndexLayout = (props: dataType) => {
+const Index = (props: dataType) => {
   const { wholelists, article, positionSummary, settings, titleMessage, title } = props;
   let [wholeGoups, setWholeGoups] = useState<WholelistsGroupContract[]>([]);
   let [openNav, setOpenNav] = useState<string>(selectLeader.wholeList);
@@ -74,9 +74,6 @@ const IndexLayout = (props: dataType) => {
     setWholItem(wholeItem);
   }
 
-  console.log(wholeGoups)
-
-
   return (
     <div className="desktop:w-[1339px] laptop:w-[970px] tablet:w-[760px] mx-auto my-2">
       <h3 className="text-2xl py-4 hidden tablet:block">{title}</h3>
@@ -112,40 +109,6 @@ const IndexLayout = (props: dataType) => {
       </div>
     </div>
   )
-
-  // return (
-  //   <div className="container h-100">
-  //     <div className="flex flex-row ">
-  //       <div className="basis-1/3 mr-2 my-2.5">
-  //         <div className="text-xl/[26px] text-blue mb-[15px] mt-5">LEADERS LIST</div>
-  //         <div className="h-100">
-  //           <div className="flex text-white hover:cursor-pointer"
-  //             onClick={()=>setOpenNav(selectLeader.article)}>
-  //             <div className={"text-lg px-5 py-2 grow " + articleActiveClass}>
-  //               Nvidia Shines, CELH Lags With Leaders Mixed After Fed
-  //             </div>
-  //             <div className={"text-4xl flex-none items-center w-[45px] pl-[4.5px] pt-[9px] " + articleUnActiveClass}>
-  //               <EllipsisOutlined />
-  //             </div>
-  //           </div>
-  //           <div className={"border border-[#ddd] text-lg shadow-md mt-[18px] p-3 flex hover:cursor-pointer bg-white "+ positionSummaryClass}
-  //             onClick={()=>setOpenNav(selectLeader.positionSummary)}>
-  //             <UnorderedListOutlined className="mt-1"/>
-  //             <span className="pl-2">POSITIONS SUMMARY</span>
-  //           </div>
-  //           <WholeList 
-  //             wholeGoups={wholeGoups} 
-  //             isActiveWholeList={isActiveWholeList}
-  //             onClickWholeList={onClickWholeList}/>
-  //         </div>
-
-  //       </div>
-  //       <div className="basis-2/3"> 
-  //         {<MainComponent />}
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
 }
 
-export default IndexLayout;
+export default Index;
