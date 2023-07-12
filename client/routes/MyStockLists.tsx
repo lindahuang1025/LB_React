@@ -10,6 +10,7 @@ import chartImag from "@/public/img/Chart.png";
 import articleImag from "@/public/img/Alerts.png";
 import alertImag from "@/public/img/Alerts.png";
 import deleteImag from "@/public/img/trash-default.svg";
+import exportImag from "@/public/img/export.svg";
 import { LeadersImage, GreenArrowImage, RedArrowImage } from "@/client/config/imgConfig";
 import ErrorHandler from "@/client/component/ErrorHandler";
 import { ArrowDownOutlined, ArrowUpOutlined, CaretDownOutlined, DownOutlined, UserOutlined } from "@ant-design/icons";
@@ -107,11 +108,11 @@ const SymbolItem = ({ _symbol }: { _symbol: WholelistsContract }) => {
     <td className="p-4 text-center"><VolumePersentChange symbol={_symbol} /></td>
     <td>
       <div className="flex flex-row">
-      <Image height="30" width="30" alt="" src={chartImag} />
-      <Image height="30" width="30" alt="" src={addImag} />
-      <Image height="30" width="30" alt="" src={articleImag} />
-      <Image height="30" width="30" alt="" src={alertImag} />
-      <Image height="30" width="30" alt="" src={deleteImag} />
+        <Image height="30" width="30" alt="" src={chartImag} />
+        <Image height="30" width="30" alt="" src={addImag} />
+        <Image height="30" width="30" alt="" src={articleImag} />
+        <Image height="30" width="30" alt="" src={alertImag} />
+        <Image height="30" width="30" alt="" src={deleteImag} />
       </div>
     </td>
   </tr>
@@ -125,7 +126,7 @@ const SymbolMobileItem = ({ _symbol }: { _symbol: WholelistsContract }) => {
   else if (_symbol.Volume > 1000) {
     volume = (Math.floor((_symbol.Volume / 1000) * 10) / 10) + "K";
   }
-  return <div className="text-left bg-white text-[#333] text-lg p-4 h-[50px] mt-1 mb-1 shadow-xl">
+  return <div className="text-left bg-white text-[#333] text-lg p-4 h-[400px] mt-3 mb-1 shadow-xl">
     <div className="mb-4"><span>Symbol :</span> <span className="p-4 font-black">{_symbol.Symbol}</span></div>
     <div className="mb-4"><span>CompanyName :</span><span className="p-4 font-light">{_symbol.CompanyName}</span></div>
     <div className="mb-4"><span>Price :</span><span className="p-4">{"$" + _symbol.Price}</span></div>
@@ -133,6 +134,13 @@ const SymbolMobileItem = ({ _symbol }: { _symbol: WholelistsContract }) => {
     <div className="mb-4"><span>Price%Chg. :</span><span className="p-4"><PricePersentChange symbol={_symbol} /></span></div>
     <div className="mb-4"><span>Volume :</span>{volume}</div>
     <div className="mb-4"><span>Volume%Chg. :</span><span className="p-4"><VolumePersentChange symbol={_symbol} /></span></div>
+    <div className="flex flex-row">
+        <Image height="30" width="30" alt="" src={chartImag} />
+        <Image height="30" width="30" alt="" src={addImag} />
+        <Image height="30" width="30" alt="" src={articleImag} />
+        <Image height="30" width="30" alt="" src={alertImag} />
+        <Image height="30" width="30" alt="" src={deleteImag} />
+      </div>
   </div>
 }
 
@@ -167,6 +175,12 @@ const MyStockLists = (props: dataType) => {
         </Button>
       </Dropdown>
       <Button size={'large'} className="ml-4 text-base">Edit Stock List</Button>
+      <div className="float-right mt-5 mr-[10px]">
+        <div className="flex flex-row">
+          <span className="w-[65px]">EXPORT</span>
+          <Image height="22" width="22" alt="" src={exportImag} />
+        </div>
+      </div>
       <div className="tablet:hidden">
         {
           wholelists.map((item, i) => {
