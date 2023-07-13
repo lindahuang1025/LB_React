@@ -55,11 +55,11 @@ const Header: React.FC<dataType> = (props: dataType) => {
         </div>
         <div className="flex-1 flex justify-end min-w-[20px]">
           <Image
-            width={12}
-            height={12}
+            width={0}
+            height={0}
             src={close}
             alt="close"
-            className="mr-2 cursor-pointer"
+            className="mr-2 cursor-pointer w-[12px] h-auto"
             onClick={e => setRenderAlert(false)}
           />
         </div>
@@ -69,17 +69,19 @@ const Header: React.FC<dataType> = (props: dataType) => {
       <div className="desktop:w-[1339px] laptop:w-[970px] tablet:w-[760px] flex h-[74px] mx-auto justify-center">
         <div className="flex-1 py-[30px] hidden laptop:block">
           <Image
-            width={180}
-            height={14}
+            width={0}
+            height={0}
             src={logo}
             alt="logo"
+            className="w-[180px] h-auto"
           />
         </div>
         <Image
-          width={200}
-          height={43}
+          width={0}
+          height={0}
           src={title}
           alt="title"
+          className="w-[200px] h-auto"
         />
         <div className="flex-1 py-5 justify-end hidden laptop:flex">
           <Search
@@ -119,17 +121,17 @@ const Header: React.FC<dataType> = (props: dataType) => {
         </div>
         <div className="flex-1 flex justify-end min-w-[20px]">
           <Image
-            width={12}
-            height={12}
+            width={0}
+            height={0}
             src={close}
             alt="close"
-            className="mr-2 cursor-pointer"
+            className="mr-2 cursor-pointer w-[12px] h-auto"
             onClick={e => setRenderAlert(false)}
           />
         </div>
       </div>
     }
-
+    {props.marketIndices &&
     <div className="bg-white">
       <div className="desktop:w-[1339px] laptop:w-[970px] tablet:w-[760px] mx-auto hidden tablet:flex">
         <MarketIndices marketIndices={props.marketIndices} />
@@ -143,7 +145,7 @@ const Header: React.FC<dataType> = (props: dataType) => {
           />
         </div>
       </div>
-    </div>
+    </div>}
   </div>
 }
 
