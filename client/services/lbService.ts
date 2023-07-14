@@ -1,5 +1,6 @@
 import request from "@/client/services/axios";
-import { SymbolSearchResponse } from "@/contracts"
+// import { SymbolSearchResponse } from "@/contracts"
+import { SymbolSearchResponse } from "@/contracts/dtos"
 
 function getArticle() {
   return request({

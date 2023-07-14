@@ -19,4 +19,13 @@ export class Article {
 
   @Column()
   Symbols: string
+
+  constructor(initializer?: any) {
+    this.Id = initializer?.Id;
+    this.Headline = initializer?.Headline;
+    this.ArticleContent = initializer?.ArticleContent;
+    this.PublicationDate = initializer?.PublicationDate;
+    this.UpdateDate = initializer?.UpdateDate;
+    this.Symbols = initializer?.Symbols;
+  }
 }

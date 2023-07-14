@@ -9,7 +9,8 @@ import { getMarketIndices } from "@/server/repositories/market-indices-resposito
 import { getArticle, getPositionSummary, getWholelists } from "@/server/repositories/leaders-respository";
 import { getIntradayArticle, getTop10Article, getMarketArticle } from "@/server/repositories/market-responsitory";
 
-import { IndexProps } from "@/contracts/props"
+import { WholelistsContract, ArticleContract, PositionSummaryContract, MarketIndicesContract } from "@/contracts"
+import { MarketIndicesInterface, IndexProps } from "@/contracts/interfaces"
 
 const Index =(props: IndexProps) => {
   return <>
@@ -30,7 +31,7 @@ Index.getInitialProps = async function(): Promise<IndexProps> {
   const wholelists: WholelistsContract[] = await getWholelists();
   const article: ArticleContract = await getArticle();
   const positionSummaryList: PositionSummaryContract[] = await getPositionSummary();
-  const marketIndices: MarketIndicesContract = await getMarketIndices()
+  const marketIndices: MarketIndicesInterface = await getMarketIndices()
 
   const intradayArticle: ArticleContract = await getIntradayArticle();
   const top10Article: ArticleContract = await getTop10Article();

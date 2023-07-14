@@ -50,7 +50,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
  *             Category:
  *               type: string        
  */
-export default async function(
+async function onGetRelatedNews(
   req: NextApiRequest, 
   res: NextApiResponse
   ) {
@@ -58,3 +58,5 @@ export default async function(
     const response = { ok: true, message: "success", data: dataList };
     res.status(200).json(response);
 }
+
+export default onGetRelatedNews

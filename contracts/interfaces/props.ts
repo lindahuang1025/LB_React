@@ -1,20 +1,25 @@
-import { Settings } from "@/contracts"
-import { MarketIndicesContract } from "@/contracts"
-import { ArticleContract } from "@/contracts"
-import { WholelistsContract } from "@/contracts"
-import { PositionSummaryContract } from "@/contracts"
+import { Settings, ArticleContract, WholelistsContract, PositionSummaryContract } from "@/contracts"
+import { MarketIndicesInterface } from "@/contracts/interfaces"
+
+export interface HeaderPropsNullable {
+  marketIndices: MarketIndicesInterface | null
+}
+
+export interface HeaderProps extends HeaderPropsNullable {
+  marketIndices: MarketIndicesInterface,
+}
 
 export interface PageProps {
   wholelists: WholelistsContract[],
   article: ArticleContract,
   positionSummary: PositionSummaryContract[],
-  marketIndices: MarketIndicesContract,
   title: string,
   titleMessage: string,
-  settings: Settings
+  settings: Settings,
+  type?: string,
 };
 
-export interface RouterProps extends PageProps {
+export interface RouterProps extends HeaderProps, PageProps {
   intradayArticle: ArticleContract,
   top10Article: ArticleContract,
   marketArticle: ArticleContract,
@@ -29,12 +34,6 @@ export interface RouterProps extends PageProps {
   top10TitleMessage: string,
   top10Setting: Settings,
   thebigpictureSetting: Settings,
-
-  marketIndices: MarketIndicesContract, // TODO
 }
 
-export interface HeaderProps {
-  marketIndices: MarketIndicesContract,
-}
-
-export interface IndexProps extends RouterProps, HeaderProps {}
+export interface IndexProps extends RouterProps {}

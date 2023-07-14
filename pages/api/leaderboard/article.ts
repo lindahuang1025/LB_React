@@ -38,11 +38,10 @@ import type { NextApiRequest, NextApiResponse } from 'next'
  *           Symbols:
  *             type: string   
  */
-export default async function(
-  req: NextApiRequest, 
-  res: NextApiResponse
-  ) {
+async function onGetArticle(req: NextApiRequest, res: NextApiResponse) {
     const dataList = await getArticle();
     const response = { ok: true, message: "success", data: dataList };
     res.status(200).json(response);
 }
+
+export default onGetArticle

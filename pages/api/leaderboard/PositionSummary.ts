@@ -58,7 +58,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
  *             IsInList:
  *               type: boolean      
  */
-export default async function(
+async function onGetPositionSummary(
   req: NextApiRequest, 
   res: NextApiResponse
   ) {
@@ -66,3 +66,5 @@ export default async function(
     const response = { ok: true, message: "success", data: dataList };
     res.status(200).json(response);
 }
+
+export default onGetPositionSummary

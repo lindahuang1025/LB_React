@@ -1,7 +1,9 @@
 import React from 'react'
 import { Divider } from "antd";
 import { CloseOutlined, SearchOutlined } from '@ant-design/icons';
-import { ApiRequestState, SearchedSymbolContract } from "@/contracts"
+
+import { SearchedSymbolDto } from "@/contracts/dtos"
+import { ApiRequestState } from "@/contracts/enumerates"
 
 interface SearchProps {
 	searchText: string;
@@ -9,7 +11,7 @@ interface SearchProps {
 	setSearchInputFocused: any;
 	searchInputFocused: boolean;
 	searchSymbolsStatus: ApiRequestState;
-	searchedSymbols: SearchedSymbolContract[];
+	searchedSymbols: SearchedSymbolDto[];
 }
 
 const Search: React.FC<SearchProps> = (props: SearchProps) => {

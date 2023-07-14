@@ -18,10 +18,10 @@ const Menu: React.FC<{}> = (props: {}) => {
     () => menuOpen ? "h-full left-0" : "h-full -left-[300px]",
     [menuOpen]
   )
-  const [openSubMenuIndex, setOpenSubMenuIndex] = React.useState<number>(null)
+  const [openSubMenuIndex, setOpenSubMenuIndex] = React.useState<number | null>(null)
 
   const router = useRouter()
-  const shallowRouting = p => {
+  const shallowRouting = (p: string) => {
     router.push(`/?p=${p}`, undefined, { shallow: true })
     setMenuOpen(false)
   }

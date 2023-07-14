@@ -26,34 +26,34 @@ export class WholelistsContract {
     ListName: string
     PositionSize: string
   
-    constructor(initializer?: any) {
-      this.Symbol = initializer?.Symbol;
-      this.CompanyName = initializer?.CompanyName;
-      this.Price = initializer?.Price;
-      this.PriceChange = initializer?.PriceChange;
-      this.PricePercentChange = initializer?.PricePercentChange;
-      this.Volume = initializer?.Volume;
-      this.VolumePercentChange = initializer?.VolumePercentChange;
-      this.Header = initializer?.Header;
-      this.Sector = initializer?.Sector;
-      this.SectorRank = initializer?.SectorRank;
-      this.SymbolOrder = initializer?.SymbolOrder;
-      this.Story = initializer?.Story;
-      this.UpdateDate = initializer?.UpdateDate;
-      this.NearBuyPoint = initializer?.NearBuyPoint;
-      this.BuyPoint = initializer?.BuyPoint;
-      this.BuyRangeFrom = initializer?.BuyRangeFrom;
-      this.BuyRangeTo = initializer?.BuyRangeTo;
-      this.CurrentAction = initializer?.CurrentAction;
-      this.LeaderboardAnalysis = initializer?.LeaderboardAnalysis;
-      this.BackStory = initializer?.BackStory;
-      this.IsInLeaderboard = initializer?.IsInLeaderboard;
-      this.RecentArticle = initializer?.RecentArticle;
-      this.PreviousClose = initializer?.PreviousClose;
-      this.CheckupUrl = initializer?.CheckupUrl;
-      this.ListName = initializer?.ListName;
-      this.PositionSize = initializer?.PositionSize;
-    }
+  constructor(initializer?: any) {
+    this.Symbol = initializer?.Symbol;
+    this.CompanyName = initializer?.CompanyName;
+    this.Price = initializer?.Price;
+    this.PriceChange = initializer?.PriceChange;
+    this.PricePercentChange = initializer?.PricePercentChange;
+    this.Volume = initializer?.Volume;
+    this.VolumePercentChange = initializer?.VolumePercentChange;
+    this.Header = initializer?.Header;
+    this.Sector = initializer?.Sector;
+    this.SectorRank = initializer?.SectorRank;
+    this.SymbolOrder = initializer?.SymbolOrder;
+    this.Story = initializer?.Story;
+    this.UpdateDate = initializer?.UpdateDate;
+    this.NearBuyPoint = initializer?.NearBuyPoint;
+    this.BuyPoint = initializer?.BuyPoint;
+    this.BuyRangeFrom = initializer?.BuyRangeFrom;
+    this.BuyRangeTo = initializer?.BuyRangeTo;
+    this.CurrentAction = initializer?.CurrentAction;
+    this.LeaderboardAnalysis = initializer?.LeaderboardAnalysis;
+    this.BackStory = initializer?.BackStory;
+    this.IsInLeaderboard = initializer?.IsInLeaderboard;
+    this.RecentArticle = initializer?.RecentArticle;
+    this.PreviousClose = initializer?.PreviousClose;
+    this.CheckupUrl = initializer?.CheckupUrl;
+    this.ListName = initializer?.ListName;
+    this.PositionSize = initializer?.PositionSize;
+  }
 }
 
 export class WholelistsGroupContract {

@@ -1,6 +1,5 @@
 import { DataSourceOptions } from "typeorm"
 import * as path from 'path';
-import { User } from "@/server/entities/user-entity"
 import { Article } from "@/server/entities/article-entity"
 import { Wholelists } from "@/server/entities/wholelists-entity"
 import { PositionSummary } from "@/server/entities/position-summary-entity"
@@ -24,7 +23,6 @@ export const dataSourceOptions: DataSourceOptions =  {
   logging: true,
   migrationsTableName: 'lb_migrations',
   entities: [
-    User,
     Article,
     Wholelists,
     PositionSummary,

@@ -1,4 +1,4 @@
-export class marketContract {
+export interface marketContract {
     header: string
     article: string
     marketInfos: Array<MarketInfoItem>
@@ -7,12 +7,12 @@ export class marketContract {
     storeToWatch:Array<MarketVolume>
 
 }
-export class MarketInfoItem {
+export interface MarketInfoItem {
   title : string
   value:string
 }
 
-export class MarketVolume {
+export interface MarketVolume {
   title : string
   link:string
   value:string
@@ -27,7 +27,7 @@ export class MarketSymbol{
     this.QuoteUrl =data.QuoteUrl;
   }
 }
-export class Settings{
+export interface Settings{
   showBanner:Boolean
   bannerText:string
   showSymbolGroup:Boolean

@@ -10,18 +10,16 @@ import tour from "@/public/img/tour.svg";
 import arrowup from "@/public/img/arrowup.png";
 import close from "@/public/img/close.svg";
 import { searchSymbols } from "@/client/services/lbService"
-import { ApiRequestState, SearchedSymbolContract, SymbolSearchResponse, MarketIndicesContract } from "@/contracts"
 
 import Menu from '@/client/container/Menu'
 import Search from '@/client/container/Search'
 import MarketIndices from '@/client/container/MarketIndices'
 
-interface dataType {
-  marketIndices: MarketIndicesContract;
-};
+import { HeaderPropsNullable, MarketIndicesInterface } from "@/contracts/interfaces"
+import { SearchedSymbolDto, SymbolSearchResponse } from "@/contracts/dtos"
+import { ApiRequestState } from "@/contracts/enumerates"
 
-const Header: React.FC<dataType> = (props: dataType) => {
-  
+const Header: React.FC<HeaderPropsNullable> = (props: HeaderPropsNullable) => {
   const [renderAlert, setRenderAlert] = React.useState<boolean>(true)
 
   const [searchText, setSearchText] = React.useState<string>("")
@@ -31,7 +29,7 @@ const Header: React.FC<dataType> = (props: dataType) => {
     onSearchSymbols(searchText)
   }
 
-  const [searchedSymbols, setSearchedSymbols] = React.useState<SearchedSymbolContract[]>([])
+  const [searchedSymbols, setSearchedSymbols] = React.useState<SearchedSymbolDto[]>([])
   const [searchSymbolsStatus, setSearchSymbolsStatus] = React.useState<ApiRequestState>(ApiRequestState.SUCCESS)
   const onSearchSymbols = async (searchText: string = "") => {
     setSearchSymbolsStatus(ApiRequestState.PENDING)
@@ -132,20 +130,21 @@ const Header: React.FC<dataType> = (props: dataType) => {
       </div>
     }
     {props.marketIndices &&
-    <div className="bg-white">
-      <div className="desktop:w-[1339px] laptop:w-[970px] tablet:w-[760px] mx-auto hidden tablet:flex">
-        <MarketIndices marketIndices={props.marketIndices} />
-        <div className="flex items-center">
-          <p className="text-xl font-lato mr-[18px]">Market in confirmed uptrend</p>
-          <Image
-            width={42}
-            className="py-[17px]"
-            src={arrowup}
-            alt="arrowup"
-          />
+      <div className="bg-white">
+        <div className="desktop:w-[1339px] laptop:w-[970px] tablet:w-[760px] mx-auto hidden tablet:flex">
+          <MarketIndices marketIndices={props.marketIndices as MarketIndicesInterface} />
+          <div className="flex items-center">
+            <p className="text-xl font-lato mr-[18px]">Market in confirmed uptrend</p>
+            <Image
+              width={42}
+              className="py-[17px]"
+              src={arrowup}
+              alt="arrowup"
+            />
+          </div>
         </div>
       </div>
-    </div>}
+    }
   </div>
 }
 

@@ -4,6 +4,10 @@ export enum ApiRequestState {
   ERROR     = "ERROR",
 }
 
+export enum MarketStatus {
+  AfterHour = "AFTER HOURS",
+}
+
 export enum SelectLeader {
   article         = "Article",
   positionSummary = "Position Summary",

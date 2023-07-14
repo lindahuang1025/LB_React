@@ -11,7 +11,7 @@ const NotFound: React.FC<{}> = () => {
 
   return <>
     <ErrorHandler>
-      <Header />
+      <Header marketIndices={null} />
     </ErrorHandler>
     <div className="bg-[#f5f5f5] h-[400px] flex items-center justify-center">
     	<div className="text-center">

@@ -1,4 +1,3 @@
-
 import { getWholelists } from "@/server/repositories/leaders-respository"
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -82,7 +81,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
  *             PositionSize:
  *               type: string   
  */
-export default async function(
+async function onGetWholelists(
   req: NextApiRequest, 
   res: NextApiResponse
   ) {
@@ -90,3 +89,5 @@ export default async function(
     const response = { ok: true, message: "success", data: dataList };
     res.status(200).json(response);
 }
+
+export default onGetWholelists

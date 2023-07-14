@@ -21,7 +21,6 @@ interface dataType {
   wholelists: WholelistsContract[],
   article: ArticleContract,
   positionSummary: PositionSummaryContract[],
-  marketIndices: MarketIndicesContract,
   title: string,
   titleMessage: string,
   settings: Settings

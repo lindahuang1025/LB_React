@@ -1,12 +1,14 @@
 import React from "react"
 import { useSearchParams } from 'next/navigation'
 
-import { RouterProps, Routes } from "@/contracts"
 import Index from "@/client/routes/Index"
 import MyAlert from "@/client/routes/MyAlert"
 import MyStockLists from "@/client/routes/MyStockLists"
-import Recentaction from "@/client/routes/Recentaction"
+import RecentAction from "@/client/routes/RecentAction"
 import TheBigPicture from "../component/TheBigPicture"
+
+import { Routes } from "@/contracts/enumerates"
+import { RouterProps } from "@/contracts/interfaces"
 
 const Router: React.FC<RouterProps> = (props: RouterProps) => {
 
@@ -26,8 +28,8 @@ const Router: React.FC<RouterProps> = (props: RouterProps) => {
           settings={props.settings}
         />
       )
-    case Routes.Recentaction:
-      return <Recentaction />
+    case Routes.RecentAction:
+      return <RecentAction />
     case Routes.SectorLeaders:
       return (
         <Index
@@ -37,6 +39,7 @@ const Router: React.FC<RouterProps> = (props: RouterProps) => {
           title={props.sectorLeadersTitle}
           titleMessage={props.sectorLeadersTitleMessage}
           settings={props.sectorLeadersSetting}
+          type=""
         />
       )
     case Routes.Stockspotlight:
@@ -65,7 +68,7 @@ const Router: React.FC<RouterProps> = (props: RouterProps) => {
       )
     case Routes.TheBigPicture:
       return (
-      <TheBigPicture   {...props} />
+        <TheBigPicture article={props.article} />
       )
     default:
       return (
@@ -76,6 +79,7 @@ const Router: React.FC<RouterProps> = (props: RouterProps) => {
           title={props.title}
           titleMessage={props.titleMessage}
           settings={props.settings}
+          type=""
         />
       )
   }

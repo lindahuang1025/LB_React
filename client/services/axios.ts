@@ -23,7 +23,8 @@ export default function Axios(request: AxiosRequestConfig) {
             error.code + ": " + error.message,
             error.config
         );
-      return;
+      // return;
+      throw error
     }
   );
 }

@@ -4,8 +4,6 @@ import { MarketType, marketContract } from "@/contracts/marketContract";
 
 interface dataType {
   article: ArticleContract,
-  marketInfo: marketContract,
-  MarketType: MarketType
 };
 
 const TheBigPicture = (props: dataType) => {

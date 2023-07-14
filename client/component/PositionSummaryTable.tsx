@@ -59,7 +59,7 @@ const PositionSummaryTable = ({positionSummary}: {positionSummary: PositionSumma
         className='border border-[#ddd]'
         columns={columns} 
         dataSource={positionSummary}
-        key={(_, i) => i}
+        rowKey={(i: PositionSummaryContract) => i.Id}
         pagination={false}  />
     </div>)
 }

@@ -1,14 +1,15 @@
-import { MarketIndicesContract, SearchedSymbolContract } from "@/contracts"
+// import { MarketIndicesContract, SearchedSymbolContract } from "@/contracts"
+import { MarketIndicesDto, SearchedSymbolDto } from "@/contracts/dtos"
 
-async function getMarketIndices(): Promise<MarketIndicesContract> {
+async function getMarketIndices(): Promise<MarketIndicesDto> {
   const marketIndicesData: any = require("@/server/mockData/market-indices.json")
-  const marketIndices: MarketIndicesContract = new MarketIndicesContract(marketIndicesData)
+  const marketIndices = new MarketIndicesDto(marketIndicesData)
   return Promise.resolve(marketIndices)
 }
 
-async function getSearchedSymbols(): Promise<SearchedSymbolContract[]> {
+async function getSearchedSymbols(): Promise<SearchedSymbolDto[]> {
   const searchedSymbolsData: any[] = require("@/server/mockData/searched-symbols.json")
-  const searchedSymbol: SearchedSymbolContract[] = searchedSymbolsData.map((i: any) => new SearchedSymbolContract(i))
+  const searchedSymbol = searchedSymbolsData.map((i: any) => new SearchedSymbolDto(i))
   return Promise.resolve(searchedSymbol)
 }
 

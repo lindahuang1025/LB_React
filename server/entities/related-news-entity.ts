@@ -34,4 +34,18 @@ export class RelatedNews {
 
   @Column()
   Category: string
+
+  constructor(initializer?: any) {
+    this.Id = initializer?.Id;
+    this.Headline = initializer?.Headline;
+    this.ArticleContent = initializer?.ArticleContent;
+    this.PublicationDate = initializer?.PublicationDate;
+    this.UpdateDate = initializer?.UpdateDate;
+    this.Symbols = initializer?.Symbols;
+    this.Author = initializer?.Author;
+    this.Articleurl = initializer?.Articleurl;
+    this.ImageUrl = initializer?.ImageUrl;
+    this.Image150Url = initializer?.Image150Url;
+    this.Category = initializer?.Category;
+  }
 }

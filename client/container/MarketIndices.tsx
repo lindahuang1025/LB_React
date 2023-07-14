@@ -1,12 +1,8 @@
 import React from 'react'
 import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
-import { MarketIndicesContract } from "@/contracts"
+import { HeaderProps } from "@/contracts/interfaces"
 
-interface MarketIndicesProps {
-  marketIndices: MarketIndicesContract
-}
-
-const MarketIndices: React.FC<MarketIndicesProps> = (props: MarketIndicesProps) => {
+const MarketIndices: React.FC<HeaderProps> = (props: HeaderProps) => {
 
   const searchElement = React.useRef<HTMLInputElement>(null)
   

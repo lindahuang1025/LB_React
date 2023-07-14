@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Input } from "antd";
 import { getStockList } from "@/server/repositories/market-responsitory";
 
-const MyAlert = (props: dataType) => {
+const MyAlert = () => {
   return <>
     <div className="container">
       <div className="mt-2">

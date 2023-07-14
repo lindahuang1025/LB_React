@@ -4,4 +4,5 @@ export * from "@/contracts/symbolSearchContract"
 export * from "@/contracts/articleContract";
 export * from "@/contracts/positionSummaryContract";
 export * from "@/contracts/wholelistsContract";
+export * from "@/contracts/marketContract";
 export * from "@/contracts/props";
